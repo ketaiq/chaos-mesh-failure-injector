@@ -1,6 +1,6 @@
 from enum import Enum, unique
 import os
-from app.selector.selector import Selector
+from app.selector.selector import GenericSelector, Selector
 
 PREFIX = "app.kubernetes.io"
 
@@ -21,7 +21,7 @@ class Label(Enum):
     MANAGED_BY = os.path.join(PREFIX, "managed-by")
 
 
-class LabelSelector:
+class LabelSelector(GenericSelector):
     """
     Represents the labels that the experiment's target Pod must have.
 

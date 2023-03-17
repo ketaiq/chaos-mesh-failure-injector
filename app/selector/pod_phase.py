@@ -1,5 +1,5 @@
 from enum import Enum, unique, auto
-from app.selector.selector import Selector
+from app.selector.selector import GenericSelector, Selector
 
 
 @unique
@@ -15,7 +15,9 @@ class PodPhase(Enum):
     Succeeded = auto()
     Failed = auto()
     Unknown = auto()
-class PodPhaseSelector:
+
+
+class PodPhaseSelector(GenericSelector):
     """
     Represents the phase of the experiment's target Pod.
 

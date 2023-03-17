@@ -1,10 +1,9 @@
-from app.selector.label import LabelSelector
-from app.selector.valid_label import ValidLabel
+from app.selector.label import LabelSelector, Label
 import yaml
 
 
 def test_init():
-    label_selector = LabelSelector({ValidLabel.NAME.value: "identity"})
+    label_selector = LabelSelector({Label.NAME.value: "identity"})
     yaml_dump = yaml.dump(label_selector.value)
     assert yaml_dump == yaml.dump(
         {"labelSelectors": {"app.kubernetes.io/name": "identity"}}

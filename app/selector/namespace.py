@@ -1,7 +1,7 @@
-from app.selector.selector import Selector
+from app.selector.selector import GenericSelector, Selector
 
 
-class NamespaceSelector:
+class NamespaceSelector(GenericSelector):
     """
     Represents the namespace of the experiment's target Pod.
 

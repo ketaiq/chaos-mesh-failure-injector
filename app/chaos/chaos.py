@@ -1,7 +1,5 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 
 
 class Chaos(ABC):
-    @abstractmethod
-    def create_experiment(self):
-        pass
+    pass
