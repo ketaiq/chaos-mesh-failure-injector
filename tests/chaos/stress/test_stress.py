@@ -28,11 +28,9 @@ def test_init():
             "stressChaos": {
                 "mode": mode,
                 "selector": {
-                    "selector": {
-                        "labelSelectors": {"app.kubernetes.io/name": "identity"},
-                        "namespaces": ["alms"],
-                        "podPhaseSelectors": ["Running"],
-                    }
+                    "labelSelectors": {"app.kubernetes.io/name": "identity"},
+                    "namespaces": ["alms"],
+                    "podPhaseSelectors": ["Running"],
                 },
                 "stressors": {
                     "memory": {

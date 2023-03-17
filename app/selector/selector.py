@@ -36,9 +36,9 @@ class SelectorStruct:
         a formatted dict for yaml dumping"""
 
     def __init__(self, *args):
-        self.value = {"selector": {}}
+        self.value = {}
         for arg in args:
             if issubclass(type(arg), GenericSelector):
                 for key, value in arg.value.items():
                     if key in [l for l, _ in Selector.__members__.items()]:
-                        self.value["selector"][key] = value
+                        self.value[key] = value

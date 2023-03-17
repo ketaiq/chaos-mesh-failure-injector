@@ -14,13 +14,9 @@ class Stress(Chaos):
         stressors: Type[Stressor],
         selector: SelectorStruct,
     ):
-        self.value = {
-            "name": name,
-            "templateType": Kind.StressChaos.name,
-            "deadline": duration,
-            "stressChaos": {
-                "selector": selector.value,
-                "mode": mode,
-                "stressors": stressors.value,
-            },
+        super().__init__(name, Kind.StressChaos.name, duration)
+        self.value["stressChaos"] = {
+            "selector": selector.value,
+            "mode": mode,
+            "stressors": stressors.value,
         }
