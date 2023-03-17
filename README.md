@@ -1,7 +1,15 @@
 # chaos-mesh-failure-injector
 
-This sends HTTP requests to a chaosd server to inject certain failures.
+This tool generates desired yaml files to inject certain failures with [Chaos Mesh](https://chaos-mesh.org/).
 
-## Network Delay
+## 1. Environment
 
-Do not interrupt the program otherwise it won't recover failures!
+Create an environment
+```sh
+conda env create -f environment.yml
+```
+
+Activate conda environment
+```sh
+conda activate cmfi
+```

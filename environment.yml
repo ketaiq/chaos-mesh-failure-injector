@@ -1,0 +1,10 @@
+name: cmfi
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - black
+  - python=3.10
+  - requests
+  - pyyaml
+  - pandas
