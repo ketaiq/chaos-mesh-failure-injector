@@ -7,6 +7,7 @@ from app.selector.pod_phase import PodPhase, PodPhaseSelector
 from app.selector.selector import SelectorStruct
 from app.workflow.task_type import TaskType
 from app.workflow.workflow import Workflow
+from app.chaos.suspend import Suspend
 
 
 def gen_linear_memory_stress(
@@ -16,6 +17,7 @@ def gen_linear_memory_stress(
     duration: int,
     namespace: str,
     label: str,
+    suspend: str = None,
 ):
     """
     Generates a serial workflow to simulate memory stress in a linear pattern.
@@ -34,9 +36,13 @@ def gen_linear_memory_stress(
         chosen namespace where the Chaos experiment takes effect
     label : str
         chosen label that the experiment's target Pod must have
+    suspend : str
+        suspending time before the Chaos experiment
     """
 
     all_chaos = []
+    if suspend:
+        all_chaos.append(Suspend(suspend))
     mode = Mode.ALL.value
     ls = LabelSelector({Label.NAME.value: label})
     ns = NamespaceSelector(namespace)
@@ -65,6 +71,7 @@ def gen_linear_cpu_stress(
     duration: int,
     namespace: str,
     label: str,
+    suspend: str = None,
 ):
     """
     Generates a serial workflow to simulate CPU stress in a linear pattern.
@@ -83,8 +90,12 @@ def gen_linear_cpu_stress(
         chosen namespace where the Chaos experiment takes effect
     label : str
         chosen label that the experiment's target Pod must have
+    suspend : str
+        suspending time before the Chaos experiment
     """
     all_chaos = []
+    if suspend:
+        all_chaos.append(Suspend(suspend))
     mode = Mode.ALL.value
     ls = LabelSelector({Label.NAME.value: label})
     ns = NamespaceSelector(namespace)
