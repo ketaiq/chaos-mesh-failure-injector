@@ -17,7 +17,7 @@ def gen_linear_memory_stress(
     duration: int,
     namespace: str,
     label: str,
-    suspend: str = None,
+    suspend: int = None,
 ):
     """
     Generates a serial workflow to simulate memory stress in a linear pattern.
@@ -36,20 +36,20 @@ def gen_linear_memory_stress(
         chosen namespace where the Chaos experiment takes effect
     label : str
         chosen label that the experiment's target Pod must have
-    suspend : str
-        suspending time before the Chaos experiment
+    suspend : int
+        suspending time in minutes before the Chaos experiment
     """
 
     all_chaos = []
     if suspend:
-        all_chaos.append(Suspend(suspend))
+        all_chaos.append(Suspend(f"{suspend}m"))
     mode = Mode.ALL.value
     ls = LabelSelector({Label.NAME.value: label})
     ns = NamespaceSelector(namespace)
     ps = PodPhaseSelector(PodPhase.Running.name)
     s = SelectorStruct(ns, ls, ps)
     size = init_size
-    for _ in range(duration // single_duration):
+    for _ in range((duration - suspend) // single_duration):
         m = MemoryStressor(3, f"{size}MB", oomScoreAdj=-1000)
         stress = Stress(f"{size}mb-mem", f"{single_duration}m", mode, m, s)
         size += size_increment
