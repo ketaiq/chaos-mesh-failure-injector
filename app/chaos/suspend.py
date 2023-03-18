@@ -3,5 +3,5 @@ from app.chaos.kind import Kind
 
 
 class Suspend(Chaos):
-    def __init__(self, duration: str):
-        super().__init__("suspending", Kind.Suspend.name, duration)
+    def __init__(self, name: str, duration: str):
+        super().__init__(name, Kind.Suspend.name, duration)

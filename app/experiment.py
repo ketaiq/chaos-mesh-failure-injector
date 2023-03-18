@@ -45,7 +45,16 @@ def gen_serial_stress(
     """
     all_chaos = []
     if suspend:
-        all_chaos.append(Suspend(f"{suspend}m"))
+        remain_suspend = suspend
+        suspend_index = 1
+        while remain_suspend > 0:
+            if remain_suspend >= 60:
+                all_chaos.append(Suspend(f"suspending{suspend_index}", "1h"))
+                remain_suspend -= 60
+            else:
+                all_chaos.append(Suspend(f"suspending{suspend_index}", f"{remain_suspend}m"))
+                break
+            suspend_index += 1
     mode = Mode.ALL.value
     ls = LabelSelector({Label.NAME.value: label})
     ns = NamespaceSelector(namespace)
