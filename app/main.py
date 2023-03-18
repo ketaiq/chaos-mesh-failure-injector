@@ -1,8 +1,10 @@
-from app.pattern import gen_linear_memory_stress
-
+from app.pattern import gen_serial_stress
+from app.chaos.stress.config import MemoryStressorConfig
+from app.pattern import Pattern
 
 def main():
-    gen_linear_memory_stress(5, 5, 5, 730, "alms", "identity", 550)
+    config = MemoryStressorConfig(5, 5)
+    gen_serial_stress(config, Pattern.LINEAR, 5, 730, "alms", "identity", 550)
 
 
 if __name__ == "__main__":

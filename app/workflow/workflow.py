@@ -1,6 +1,5 @@
 from app.chaos.chaos import Chaos
 from app import API_VERSION
-from typing import Type
 import yaml
 
 
@@ -29,7 +28,7 @@ class Workflow:
         name: str,
         templateType: str,
         deadline: str,
-        all_chaos: list[Type[Chaos]],
+        all_chaos: list[Chaos],
     ):
         entry = Entry(
             templateType, deadline, [chaos.value["name"] for chaos in all_chaos]

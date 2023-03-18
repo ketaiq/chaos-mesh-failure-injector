@@ -7,7 +7,7 @@ class MemoryStressor(Stressor):
     """Specifies the memory stress."""
 
     def __init__(
-        self, workers: int, size: str, time: str = None, oomScoreAdj: int = None
+        self, size: str, workers: int = 3, time: str = None, oomScoreAdj: int = None
     ):
         value = {
             "memory": {
@@ -25,5 +25,5 @@ class MemoryStressor(Stressor):
 class CPUStressor(Stressor):
     """Specifies the CPU stress."""
 
-    def __init__(self, workers: int, load: int):
+    def __init__(self, load: int, workers: int = 1):
         super().__init__({"cpu": {"workers": workers, "load": load}})
