@@ -13,11 +13,9 @@ def test_init():
     yaml_dump = yaml.dump(s.value)
     assert yaml_dump == yaml.dump(
         {
-            "selector": {
-                "labelSelectors": {"app.kubernetes.io/name": "identity"},
-                "namespaces": ["alms"],
-                "podPhaseSelectors": ["Running"],
-            }
+            "labelSelectors": {"app.kubernetes.io/name": "identity"},
+            "namespaces": ["alms"],
+            "podPhaseSelectors": ["Running"],
         }
     )
 

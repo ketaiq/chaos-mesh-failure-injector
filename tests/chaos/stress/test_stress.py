@@ -17,7 +17,7 @@ def test_init():
     ns = NamespaceSelector("alms")
     ps = PodPhaseSelector(PodPhase.Running.name)
     s = SelectorStruct(ls, ns, ps)
-    m = MemoryStressor(1, 2, "1m", 3)
+    m = MemoryStressor(2, 1, "1m", 3)
     result = Stress(name, duration, mode, m, s)
     yaml_dump = yaml.dump(result.value)
     assert yaml_dump == yaml.dump(

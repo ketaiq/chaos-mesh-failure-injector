@@ -20,8 +20,8 @@ def test_init():
     ns = NamespaceSelector("alms")
     ps = PodPhaseSelector(PodPhase.Running.name)
     s = SelectorStruct(ls, ns, ps)
-    m1 = MemoryStressor(1, "10MB", "1m", 3)
-    m2 = MemoryStressor(1, "20MB", "1m", 3)
+    m1 = MemoryStressor("10MB", 1, "1m", 3)
+    m2 = MemoryStressor("20MB", 1, "1m", 3)
     stress1 = Stress(name1, duration, mode, m1, s)
     stress2 = Stress(name2, duration, mode, m2, s)
     w = Workflow(

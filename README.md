@@ -13,3 +13,15 @@ Activate conda environment
 ```sh
 conda activate cmfi
 ```
+
+## 2. Quick Start
+
+```sh
+python -m app.main
+```
+
+## 3. Test
+
+```sh
+python -m pytest --cov=app tests
+```
