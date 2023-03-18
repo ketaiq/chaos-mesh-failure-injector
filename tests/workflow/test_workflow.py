@@ -20,9 +20,10 @@ def test_init():
     ns = NamespaceSelector("alms")
     ps = PodPhaseSelector(PodPhase.Running.name)
     s = SelectorStruct(ls, ns, ps)
-    m = MemoryStressor(1, 2, "1m", 3)
-    stress1 = Stress(name1, duration, mode, m, s)
-    stress2 = Stress(name2, duration, mode, m, s)
+    m1 = MemoryStressor(1, "10MB", "1m", 3)
+    m2 = MemoryStressor(1, "20MB", "1m", 3)
+    stress1 = Stress(name1, duration, mode, m1, s)
+    stress2 = Stress(name2, duration, mode, m2, s)
     w = Workflow(
         "alms", "linear-memory-stress", TaskType.Serial.name, "20m", [stress1, stress2]
     )
@@ -58,7 +59,7 @@ def test_init():
                             "stressors": {
                                 "memory": {
                                     "workers": 1,
-                                    "size": 2,
+                                    "size": "10MB",
                                     "time": "1m",
                                     "oomScoreAdj": 3,
                                 },
@@ -81,7 +82,7 @@ def test_init():
                             "stressors": {
                                 "memory": {
                                     "workers": 1,
-                                    "size": 2,
+                                    "size": "20MB",
                                     "time": "1m",
                                     "oomScoreAdj": 3,
                                 },

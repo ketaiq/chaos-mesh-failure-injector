@@ -17,6 +17,12 @@ class Entry:
 
 
 class Workflow:
+    """
+    Represents a built-in workflow engine. Using this engine,
+    you can run different Chaos experiments in serial or parallel
+    to simulate production-level errors.
+    """
+
     def __init__(
         self,
         namespace: str,

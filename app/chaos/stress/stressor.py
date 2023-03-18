@@ -6,17 +6,20 @@ class Stressor:
 class MemoryStressor(Stressor):
     """Specifies the memory stress."""
 
-    def __init__(self, workers: int, size: str, time: str, oomScoreAdj: int):
-        super().__init__(
-            {
-                "memory": {
-                    "workers": workers,
-                    "size": size,
-                    "time": time,
-                    "oomScoreAdj": oomScoreAdj,
-                }
+    def __init__(
+        self, workers: int, size: str, time: str = None, oomScoreAdj: int = None
+    ):
+        value = {
+            "memory": {
+                "workers": workers,
+                "size": size,
             }
-        )
+        }
+        if time:
+            value["memory"]["time"] = time
+        if oomScoreAdj:
+            value["memory"]["oomScoreAdj"] = oomScoreAdj
+        super().__init__(value)
 
 
 class CPUStressor(Stressor):
