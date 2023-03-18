@@ -1,4 +1,4 @@
-from app.pattern import gen_serial_stress
+from app.experiment import gen_serial_stress
 from app.chaos.stress.config import MemoryStressorConfig
 from app.pattern import Pattern
 
