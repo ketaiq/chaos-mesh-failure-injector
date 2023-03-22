@@ -1,0 +1,700 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: Workflow
+metadata:
+  namespace: alms
+  name: linear-memory-stress
+spec:
+  entry: entry
+  templates:
+  - name: entry
+    templateType: Serial
+    deadline: 730m
+    children:
+    - suspending1
+    - suspending2
+    - suspending3
+    - suspending4
+    - suspending5
+    - suspending6
+    - suspending7
+    - suspending8
+    - suspending9
+    - suspending10
+    - 5mb-mem
+    - 10mb-mem
+    - 15mb-mem
+    - 20mb-mem
+    - 25mb-mem
+    - 30mb-mem
+    - 35mb-mem
+    - 40mb-mem
+    - 45mb-mem
+    - 50mb-mem
+    - 55mb-mem
+    - 60mb-mem
+    - 65mb-mem
+    - 70mb-mem
+    - 75mb-mem
+    - 80mb-mem
+    - 85mb-mem
+    - 90mb-mem
+    - 95mb-mem
+    - 100mb-mem
+    - 105mb-mem
+    - 110mb-mem
+    - 115mb-mem
+    - 120mb-mem
+    - 125mb-mem
+    - 130mb-mem
+    - 135mb-mem
+    - 140mb-mem
+    - 145mb-mem
+    - 150mb-mem
+    - 155mb-mem
+    - 160mb-mem
+    - 165mb-mem
+    - 170mb-mem
+    - 175mb-mem
+    - 180mb-mem
+  - name: suspending1
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending2
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending3
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending4
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending5
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending6
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending7
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending8
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending9
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending10
+    templateType: Suspend
+    deadline: 10m
+  - name: 5mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 5MB
+          oomScoreAdj: -1000
+  - name: 10mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 10MB
+          oomScoreAdj: -1000
+  - name: 15mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 15MB
+          oomScoreAdj: -1000
+  - name: 20mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 20MB
+          oomScoreAdj: -1000
+  - name: 25mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 25MB
+          oomScoreAdj: -1000
+  - name: 30mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 30MB
+          oomScoreAdj: -1000
+  - name: 35mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 35MB
+          oomScoreAdj: -1000
+  - name: 40mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 40MB
+          oomScoreAdj: -1000
+  - name: 45mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 45MB
+          oomScoreAdj: -1000
+  - name: 50mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 50MB
+          oomScoreAdj: -1000
+  - name: 55mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 55MB
+          oomScoreAdj: -1000
+  - name: 60mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 60MB
+          oomScoreAdj: -1000
+  - name: 65mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 65MB
+          oomScoreAdj: -1000
+  - name: 70mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 70MB
+          oomScoreAdj: -1000
+  - name: 75mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 75MB
+          oomScoreAdj: -1000
+  - name: 80mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 80MB
+          oomScoreAdj: -1000
+  - name: 85mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 85MB
+          oomScoreAdj: -1000
+  - name: 90mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 90MB
+          oomScoreAdj: -1000
+  - name: 95mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 95MB
+          oomScoreAdj: -1000
+  - name: 100mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 100MB
+          oomScoreAdj: -1000
+  - name: 105mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 105MB
+          oomScoreAdj: -1000
+  - name: 110mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 110MB
+          oomScoreAdj: -1000
+  - name: 115mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 115MB
+          oomScoreAdj: -1000
+  - name: 120mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 120MB
+          oomScoreAdj: -1000
+  - name: 125mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 125MB
+          oomScoreAdj: -1000
+  - name: 130mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 130MB
+          oomScoreAdj: -1000
+  - name: 135mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 135MB
+          oomScoreAdj: -1000
+  - name: 140mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 140MB
+          oomScoreAdj: -1000
+  - name: 145mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 145MB
+          oomScoreAdj: -1000
+  - name: 150mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 150MB
+          oomScoreAdj: -1000
+  - name: 155mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 155MB
+          oomScoreAdj: -1000
+  - name: 160mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 160MB
+          oomScoreAdj: -1000
+  - name: 165mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 165MB
+          oomScoreAdj: -1000
+  - name: 170mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 170MB
+          oomScoreAdj: -1000
+  - name: 175mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 175MB
+          oomScoreAdj: -1000
+  - name: 180mb-mem
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 180MB
+          oomScoreAdj: -1000

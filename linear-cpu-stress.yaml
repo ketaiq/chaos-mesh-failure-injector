@@ -1,0 +1,902 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: Workflow
+metadata:
+  namespace: alms
+  name: linear-cpu-stress
+spec:
+  entry: entry
+  templates:
+  - name: entry
+    templateType: Serial
+    deadline: 700m
+    children:
+    - suspending1
+    - suspending2
+    - suspending3
+    - suspending4
+    - suspending5
+    - suspending6
+    - suspending7
+    - suspending8
+    - suspending9
+    - suspending10
+    - 2percent-cpu
+    - 4percent-cpu
+    - 6percent-cpu
+    - 8percent-cpu
+    - 10percent-cpu
+    - 12percent-cpu
+    - 14percent-cpu
+    - 16percent-cpu
+    - 18percent-cpu
+    - 20percent-cpu
+    - 22percent-cpu
+    - 24percent-cpu
+    - 26percent-cpu
+    - 28percent-cpu
+    - 30percent-cpu
+    - 32percent-cpu
+    - 34percent-cpu
+    - 36percent-cpu
+    - 38percent-cpu
+    - 40percent-cpu
+    - 42percent-cpu
+    - 44percent-cpu
+    - 46percent-cpu
+    - 48percent-cpu
+    - 50percent-cpu
+    - 52percent-cpu
+    - 54percent-cpu
+    - 56percent-cpu
+    - 58percent-cpu
+    - 60percent-cpu
+    - 62percent-cpu
+    - 64percent-cpu
+    - 66percent-cpu
+    - 68percent-cpu
+    - 70percent-cpu
+    - 72percent-cpu
+    - 74percent-cpu
+    - 76percent-cpu
+    - 78percent-cpu
+    - 80percent-cpu
+    - 82percent-cpu
+    - 84percent-cpu
+    - 86percent-cpu
+    - 88percent-cpu
+    - 90percent-cpu
+    - 92percent-cpu
+    - 94percent-cpu
+    - 96percent-cpu
+    - 98percent-cpu
+    - 100percent-cpu
+  - name: suspending1
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending2
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending3
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending4
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending5
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending6
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending7
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending8
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending9
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending10
+    templateType: Suspend
+    deadline: 10m
+  - name: 2percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 2
+  - name: 4percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 4
+  - name: 6percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 6
+  - name: 8percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 8
+  - name: 10percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 10
+  - name: 12percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 12
+  - name: 14percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 14
+  - name: 16percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 16
+  - name: 18percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 18
+  - name: 20percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 20
+  - name: 22percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 22
+  - name: 24percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 24
+  - name: 26percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 26
+  - name: 28percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 28
+  - name: 30percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 30
+  - name: 32percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 32
+  - name: 34percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 34
+  - name: 36percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 36
+  - name: 38percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 38
+  - name: 40percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 40
+  - name: 42percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 42
+  - name: 44percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 44
+  - name: 46percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 46
+  - name: 48percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 48
+  - name: 50percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 50
+  - name: 52percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 52
+  - name: 54percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 54
+  - name: 56percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 56
+  - name: 58percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 58
+  - name: 60percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 60
+  - name: 62percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 62
+  - name: 64percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 64
+  - name: 66percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 66
+  - name: 68percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 68
+  - name: 70percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 70
+  - name: 72percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 72
+  - name: 74percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 74
+  - name: 76percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 76
+  - name: 78percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 78
+  - name: 80percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 80
+  - name: 82percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 82
+  - name: 84percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 84
+  - name: 86percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 86
+  - name: 88percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 88
+  - name: 90percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 90
+  - name: 92percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 92
+  - name: 94percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 94
+  - name: 96percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 96
+  - name: 98percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 98
+  - name: 100percent-cpu
+    templateType: StressChaos
+    deadline: 3m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 1
+          load: 100

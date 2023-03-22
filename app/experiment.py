@@ -1,7 +1,11 @@
 from app.chaos.stress.type import StressorType
 import random
 from app.chaos.mode import Mode
-from app.chaos.stress.config import StressorConfig
+from app.chaos.stress.config import (
+    MemoryStressorConfig,
+    CPUStressorConfig,
+    StressorConfig,
+)
 from app.chaos.stress.stress import Stress
 from app.chaos.stress.stressor import MemoryStressor, CPUStressor
 from app.selector.label import Label, LabelSelector
@@ -12,6 +16,16 @@ from app.workflow.task_type import TaskType
 from app.workflow.workflow import Workflow
 from app.chaos.suspend import Suspend
 from app.pattern import Pattern
+
+
+def gen_linear_memory_stress(label: str):
+    config = MemoryStressorConfig(5, 5)
+    gen_serial_stress(config, Pattern.LINEAR, 5, 730, "alms", label, 550)
+
+
+def gen_linear_cpu_stress(label: str):
+    config = CPUStressorConfig(2, 2)
+    gen_serial_stress(config, Pattern.LINEAR, 3, 700, "alms", label, 550)
 
 
 def gen_serial_stress(
@@ -52,7 +66,9 @@ def gen_serial_stress(
                 all_chaos.append(Suspend(f"suspending{suspend_index}", "1h"))
                 remain_suspend -= 60
             else:
-                all_chaos.append(Suspend(f"suspending{suspend_index}", f"{remain_suspend}m"))
+                all_chaos.append(
+                    Suspend(f"suspending{suspend_index}", f"{remain_suspend}m")
+                )
                 break
             suspend_index += 1
     mode = Mode.ALL.value
@@ -88,7 +104,7 @@ def gen_serial_stress(
         all_chaos.append(stress)
     w = Workflow(
         namespace,
-        f"{pattern.name.lower()}-memory-stress",
+        f"{pattern.name.lower()}-{config.type.name.lower()}-stress",
         TaskType.Serial.name,
         f"{duration}m",
         all_chaos,
