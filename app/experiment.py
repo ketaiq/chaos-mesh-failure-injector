@@ -16,6 +16,7 @@ from app.workflow.task_type import TaskType
 from app.workflow.workflow import Workflow
 from app.chaos.suspend import Suspend
 from app.pattern import Pattern
+from app.utils.string import convert_duration
 
 
 def gen_linear_memory_stress(label: str):
@@ -102,11 +103,12 @@ def gen_serial_stress(
             value = random.randint(config.init_value, config.max_value)
         value = int(value)
         all_chaos.append(stress)
+
     w = Workflow(
         namespace,
         f"{pattern.name.lower()}-{config.type.name.lower()}-stress",
         TaskType.Serial.name,
-        f"{duration}m",
+        convert_duration(duration),
         all_chaos,
     )
     w.dump_yaml()

@@ -8,7 +8,7 @@ spec:
   templates:
   - name: entry
     templateType: Serial
-    deadline: 700m
+    deadline: 11h40m
     children:
     - suspending1
     - suspending2
