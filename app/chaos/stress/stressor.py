@@ -25,5 +25,5 @@ class MemoryStressor(Stressor):
 class CPUStressor(Stressor):
     """Specifies the CPU stress."""
 
-    def __init__(self, load: int, workers: int = 1):
+    def __init__(self, workers: int, load: int = 1):
         super().__init__({"cpu": {"workers": workers, "load": load}})

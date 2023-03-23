@@ -3,7 +3,7 @@ from app.chaos.stress.stressor import MemoryStressor, CPUStressor
 
 def test_init():
     m = MemoryStressor(2, 1, "1m", 3)
-    c = CPUStressor(2, 1)
+    c = CPUStressor(workers=1, load=2)
     assert m.value == {
         "memory": {
             "workers": 1,

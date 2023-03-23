@@ -36,9 +36,9 @@ class CPUStressorConfig(StressorConfig):
     Attributes
     ----------
     init_value : int
-        initial percentage of CPU to be occupied
+        initial number of workers
     increment : float
-        increment of percentage of CPU
+        increment of number of workers
     max_value : int
         maximum percentage of CPU to be occupied, 100 by default, only works with random pattern
     """

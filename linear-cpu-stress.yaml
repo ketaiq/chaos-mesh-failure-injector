@@ -114,8 +114,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 2
+          workers: 2
+          load: 1
   - name: 4percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -130,8 +130,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 4
+          workers: 4
+          load: 1
   - name: 6percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -146,8 +146,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 6
+          workers: 6
+          load: 1
   - name: 8percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -162,8 +162,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 8
+          workers: 8
+          load: 1
   - name: 10percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -178,8 +178,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 10
+          workers: 10
+          load: 1
   - name: 12percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -194,8 +194,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 12
+          workers: 12
+          load: 1
   - name: 14percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -210,8 +210,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 14
+          workers: 14
+          load: 1
   - name: 16percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -226,8 +226,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 16
+          workers: 16
+          load: 1
   - name: 18percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -242,8 +242,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 18
+          workers: 18
+          load: 1
   - name: 20percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -258,8 +258,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 20
+          workers: 20
+          load: 1
   - name: 22percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -274,8 +274,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 22
+          workers: 22
+          load: 1
   - name: 24percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -290,8 +290,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 24
+          workers: 24
+          load: 1
   - name: 26percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -306,8 +306,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 26
+          workers: 26
+          load: 1
   - name: 28percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -322,8 +322,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 28
+          workers: 28
+          load: 1
   - name: 30percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -338,8 +338,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 30
+          workers: 30
+          load: 1
   - name: 32percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -354,8 +354,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 32
+          workers: 32
+          load: 1
   - name: 34percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -370,8 +370,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 34
+          workers: 34
+          load: 1
   - name: 36percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -386,8 +386,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 36
+          workers: 36
+          load: 1
   - name: 38percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -402,8 +402,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 38
+          workers: 38
+          load: 1
   - name: 40percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -418,8 +418,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 40
+          workers: 40
+          load: 1
   - name: 42percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -434,8 +434,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 42
+          workers: 42
+          load: 1
   - name: 44percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -450,8 +450,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 44
+          workers: 44
+          load: 1
   - name: 46percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -466,8 +466,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 46
+          workers: 46
+          load: 1
   - name: 48percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -482,8 +482,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 48
+          workers: 48
+          load: 1
   - name: 50percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -498,8 +498,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 50
+          workers: 50
+          load: 1
   - name: 52percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -514,8 +514,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 52
+          workers: 52
+          load: 1
   - name: 54percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -530,8 +530,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 54
+          workers: 54
+          load: 1
   - name: 56percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -546,8 +546,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 56
+          workers: 56
+          load: 1
   - name: 58percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -562,8 +562,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 58
+          workers: 58
+          load: 1
   - name: 60percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -578,8 +578,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 60
+          workers: 60
+          load: 1
   - name: 62percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -594,8 +594,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 62
+          workers: 62
+          load: 1
   - name: 64percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -610,8 +610,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 64
+          workers: 64
+          load: 1
   - name: 66percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -626,8 +626,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 66
+          workers: 66
+          load: 1
   - name: 68percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -642,8 +642,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 68
+          workers: 68
+          load: 1
   - name: 70percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -658,8 +658,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 70
+          workers: 70
+          load: 1
   - name: 72percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -674,8 +674,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 72
+          workers: 72
+          load: 1
   - name: 74percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -690,8 +690,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 74
+          workers: 74
+          load: 1
   - name: 76percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -706,8 +706,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 76
+          workers: 76
+          load: 1
   - name: 78percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -722,8 +722,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 78
+          workers: 78
+          load: 1
   - name: 80percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -738,8 +738,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 80
+          workers: 80
+          load: 1
   - name: 82percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -754,8 +754,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 82
+          workers: 82
+          load: 1
   - name: 84percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -770,8 +770,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 84
+          workers: 84
+          load: 1
   - name: 86percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -786,8 +786,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 86
+          workers: 86
+          load: 1
   - name: 88percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -802,8 +802,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 88
+          workers: 88
+          load: 1
   - name: 90percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -818,8 +818,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 90
+          workers: 90
+          load: 1
   - name: 92percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -834,8 +834,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 92
+          workers: 92
+          load: 1
   - name: 94percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -850,8 +850,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 94
+          workers: 94
+          load: 1
   - name: 96percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -866,8 +866,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 96
+          workers: 96
+          load: 1
   - name: 98percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -882,8 +882,8 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 98
+          workers: 98
+          load: 1
   - name: 100percent-cpu
     templateType: StressChaos
     deadline: 3m
@@ -898,5 +898,5 @@ spec:
       mode: all
       stressors:
         cpu:
-          workers: 1
-          load: 100
+          workers: 100
+          load: 1
