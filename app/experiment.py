@@ -26,7 +26,7 @@ def gen_linear_memory_stress(label: str):
 
 def gen_linear_cpu_stress(label: str):
     config = CPUStressorConfig(2, 2)
-    gen_serial_stress(config, Pattern.LINEAR, 3, 700, "alms", label, 550)
+    gen_serial_stress(config, Pattern.LINEAR, 3, 730, "alms", label, 550)
 
 
 def gen_serial_stress(
