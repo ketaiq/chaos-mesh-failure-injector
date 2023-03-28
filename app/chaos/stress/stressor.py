@@ -27,3 +27,10 @@ class CPUStressor(Stressor):
 
     def __init__(self, workers: int, load: int = 1):
         super().__init__({"cpu": {"workers": workers, "load": load}})
+
+    @classmethod
+    def calculate_config(cls, value: int):
+        if value <= 100:
+            return cls(value)
+        else:
+            return cls(100, value // 100)

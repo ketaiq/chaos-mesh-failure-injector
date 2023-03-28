@@ -25,8 +25,13 @@ def gen_linear_memory_stress(label: str):
 
 
 def gen_linear_cpu_stress(label: str):
-    config = CPUStressorConfig(2, 2)
-    gen_serial_stress(config, Pattern.LINEAR, 3, 730, "alms", label, 550)
+    config = CPUStressorConfig(5, 5)
+    gen_serial_stress(config, Pattern.LINEAR, 5, 730, "alms", label, 550)
+
+
+def gen_linear_cpu_stress_without_suspend(label: str):
+    config = CPUStressorConfig(10, 10)
+    gen_serial_stress(config, Pattern.LINEAR, 5, 730, "alms", label, 550)
 
 
 def gen_serial_stress(
@@ -36,7 +41,7 @@ def gen_serial_stress(
     duration: int,
     namespace: str,
     label: str,
-    suspend: int = None,
+    suspend: int = 0,
 ):
     """
     Generates a serial workflow to simulate stress.
@@ -85,7 +90,9 @@ def gen_serial_stress(
                 f"{value}mb-mem", f"{single_duration}m", mode, stressor, selector
             )
         elif config.type is StressorType.CPU:
-            stressor = CPUStressor(value)
+            if value >= 100:
+                config.increment = 100
+            stressor = CPUStressor.calculate_config(value)
             stress = Stress(
                 f"{value}percent-cpu", f"{single_duration}m", mode, stressor, selector
             )
@@ -104,9 +111,12 @@ def gen_serial_stress(
         value = int(value)
         all_chaos.append(stress)
 
+    workflow_name = f"{label}-{pattern.name.lower()}-{config.type.name.lower()}-stress"
+    if not suspend:
+        workflow_name += "-without-suspend"
     w = Workflow(
         namespace,
-        f"{pattern.name.lower()}-{config.type.name.lower()}-stress",
+        workflow_name,
         TaskType.Serial.name,
         convert_duration(duration),
         all_chaos,

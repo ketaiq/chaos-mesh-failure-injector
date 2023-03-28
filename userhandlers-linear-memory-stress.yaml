@@ -2,7 +2,7 @@ apiVersion: chaos-mesh.org/v1alpha1
 kind: Workflow
 metadata:
   namespace: alms
-  name: linear-memory-stress
+  name: userhandlers-linear-memory-stress
 spec:
   entry: entry
   templates:

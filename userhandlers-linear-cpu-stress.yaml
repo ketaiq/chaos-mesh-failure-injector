@@ -1,0 +1,664 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: Workflow
+metadata:
+  namespace: alms
+  name: userhandlers-linear-cpu-stress
+spec:
+  entry: entry
+  templates:
+  - name: entry
+    templateType: Serial
+    deadline: 12h10m
+    children:
+    - suspending1
+    - suspending2
+    - suspending3
+    - suspending4
+    - suspending5
+    - suspending6
+    - suspending7
+    - suspending8
+    - suspending9
+    - suspending10
+    - 5percent-cpu
+    - 10percent-cpu
+    - 15percent-cpu
+    - 20percent-cpu
+    - 25percent-cpu
+    - 30percent-cpu
+    - 35percent-cpu
+    - 40percent-cpu
+    - 45percent-cpu
+    - 50percent-cpu
+    - 55percent-cpu
+    - 60percent-cpu
+    - 65percent-cpu
+    - 70percent-cpu
+    - 75percent-cpu
+    - 80percent-cpu
+    - 85percent-cpu
+    - 90percent-cpu
+    - 95percent-cpu
+    - 100percent-cpu
+    - 200percent-cpu
+    - 300percent-cpu
+    - 400percent-cpu
+    - 500percent-cpu
+    - 600percent-cpu
+    - 700percent-cpu
+    - 800percent-cpu
+    - 900percent-cpu
+    - 1000percent-cpu
+    - 1100percent-cpu
+    - 1200percent-cpu
+    - 1300percent-cpu
+    - 1400percent-cpu
+    - 1500percent-cpu
+    - 1600percent-cpu
+    - 1700percent-cpu
+  - name: suspending1
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending2
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending3
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending4
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending5
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending6
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending7
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending8
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending9
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending10
+    templateType: Suspend
+    deadline: 10m
+  - name: 5percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 5
+          load: 1
+  - name: 10percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 10
+          load: 1
+  - name: 15percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 15
+          load: 1
+  - name: 20percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 20
+          load: 1
+  - name: 25percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 25
+          load: 1
+  - name: 30percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 30
+          load: 1
+  - name: 35percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 35
+          load: 1
+  - name: 40percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 40
+          load: 1
+  - name: 45percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 45
+          load: 1
+  - name: 50percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 50
+          load: 1
+  - name: 55percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 55
+          load: 1
+  - name: 60percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 60
+          load: 1
+  - name: 65percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 65
+          load: 1
+  - name: 70percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 70
+          load: 1
+  - name: 75percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 75
+          load: 1
+  - name: 80percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 80
+          load: 1
+  - name: 85percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 85
+          load: 1
+  - name: 90percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 90
+          load: 1
+  - name: 95percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 95
+          load: 1
+  - name: 100percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 1
+  - name: 200percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 2
+  - name: 300percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 3
+  - name: 400percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 4
+  - name: 500percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 5
+  - name: 600percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 6
+  - name: 700percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 7
+  - name: 800percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 8
+  - name: 900percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 9
+  - name: 1000percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 10
+  - name: 1100percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 11
+  - name: 1200percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 12
+  - name: 1300percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 13
+  - name: 1400percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 14
+  - name: 1500percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 15
+  - name: 1600percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 16
+  - name: 1700percent-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 17
