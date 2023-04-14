@@ -14,6 +14,12 @@ Activate conda environment
 conda activate cmfi
 ```
 
+Set up environment for network chaos
+
+```sh
+sh network_chaos_init.sh identity
+```
+
 ## 2. Quick Start
 
 ```sh
