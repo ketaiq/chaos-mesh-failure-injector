@@ -1,3 +1,6 @@
+from app.chaos.network.action import DelayAction
+from app.chaos.network.direction import Direction
+from app.chaos.network.network_fault import NetworkFault
 from app.chaos.stress.type import StressorType
 import random
 from app.chaos.mode import Mode
@@ -17,6 +20,7 @@ from app.workflow.workflow import Workflow
 from app.chaos.suspend import Suspend
 from app.pattern import Pattern
 from app.utils.string import convert_duration
+from dataclasses import dataclass
 
 
 def gen_linear_memory_stress(label: str):
@@ -63,20 +67,7 @@ def gen_serial_stress(
     suspend : int
         suspending time in minutes before the Chaos experiment
     """
-    all_chaos = []
-    if suspend:
-        remain_suspend = suspend
-        suspend_index = 1
-        while remain_suspend > 0:
-            if remain_suspend >= 60:
-                all_chaos.append(Suspend(f"suspending{suspend_index}", "1h"))
-                remain_suspend -= 60
-            else:
-                all_chaos.append(
-                    Suspend(f"suspending{suspend_index}", f"{remain_suspend}m")
-                )
-                break
-            suspend_index += 1
+    all_chaos = gen_serial_suspend(suspend)
     mode = Mode.ALL.value
     ls = LabelSelector({Label.NAME.value: label})
     ns = NamespaceSelector(namespace)
@@ -122,3 +113,77 @@ def gen_serial_stress(
         all_chaos,
     )
     w.dump_yaml()
+
+
+def gen_serial_network_delay(
+    pattern: Pattern,
+    single_duration: int,
+    num_task: int,
+    namespace: str,
+    label: str,
+    init_value: int,
+    increment: int = 0,
+    max_value: int = 0,
+    suspend: int = 0,
+):
+    all_chaos = gen_serial_suspend(suspend)
+    mode = Mode.ALL.value
+    ls = LabelSelector({Label.NAME.value: label})
+    ns = NamespaceSelector(namespace)
+    ps = PodPhaseSelector(PodPhase.Running.name)
+    selector = SelectorStruct(ns, ls, ps)
+    target_selector = SelectorStruct(ns)
+    value = init_value
+
+    for _ in range(num_task):
+        action = DelayAction(f"{value}ms", "0", "0ms")
+        network_fault = NetworkFault(
+            f"{value}ms-delay",
+            f"{single_duration}m",
+            mode,
+            selector,
+            target_selector,
+            action,
+            Direction.BOTH,
+        )
+        all_chaos.append(network_fault)
+        if pattern is Pattern.LINEAR:
+            # linearly increase the value
+            value += increment
+        elif pattern is Pattern.EXPONENTIAL:
+            # exponentially increase the value
+            value *= increment
+        elif pattern is Pattern.CONSTANT:
+            # keep value as the initial value
+            value = init_value
+        elif pattern is Pattern.RANDOM:
+            # randomly choose between the initial value and the maximum value
+            value = random.randint(init_value, max_value)
+        value = int(value)
+
+    workflow_name = f"{label}-{pattern.name.lower()}-network-delay"
+    total_duration = single_duration * num_task + suspend
+    w = Workflow(
+        namespace,
+        workflow_name,
+        TaskType.Serial.name,
+        convert_duration(total_duration),
+        all_chaos,
+    )
+    w.dump_yaml()
+
+
+def gen_serial_suspend(suspend: int) -> list:
+    tasks = []
+    if suspend:
+        remain_suspend = suspend
+        i = 1
+        while remain_suspend > 0:
+            if remain_suspend >= 60:
+                tasks.append(Suspend(f"suspending{i}", "1h"))
+                remain_suspend -= 60
+            else:
+                tasks.append(Suspend(f"suspending{i}", f"{remain_suspend}m"))
+                break
+            i += 1
+    return tasks

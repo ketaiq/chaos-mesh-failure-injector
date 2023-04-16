@@ -6,8 +6,14 @@
 pods=$(kubectl get pods -n alms -l app.kubernetes.io/name=$1 --field-selector status.phase=Running --no-headers | awk '{print $1}')
 for pod in $pods
 do
-    echo "installing iproute2 in pod $pod"
-    kubectl exec -n alms $pod -- apt-get update > /dev/null
-    kubectl exec -n alms $pod -- apt-get install -y apt-utils iproute2 > /dev/null
-    kubectl exec -n alms $pod -- tc -V
+    kubectl exec -it -n alms $pod -- tc -V > /dev/null
+    if [[ $? -eq 0 ]]
+    then
+        echo "iproute2 is already installed in pod $pod"
+    else
+        echo "installing iproute2 in pod $pod"
+        kubectl exec -n alms $pod -- apt-get update > /dev/null
+        kubectl exec -n alms $pod -- apt-get install -y apt-utils iputils-ping iproute2 > /dev/null
+        kubectl exec -n alms $pod -- tc -V
+    fi
 done

@@ -1,0 +1,156 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: Workflow
+metadata:
+  namespace: alms
+  name: userhandlers-linear-network-delay
+spec:
+  entry: entry
+  templates:
+  - name: entry
+    templateType: Serial
+    deadline: 3h
+    children:
+    - 100ms-delay
+    - 200ms-delay
+    - 300ms-delay
+    - 400ms-delay
+    - 500ms-delay
+    - 600ms-delay
+  - name: 100ms-delay
+    templateType: NetworkChaos
+    deadline: 30m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 100ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 200ms-delay
+    templateType: NetworkChaos
+    deadline: 30m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 200ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 300ms-delay
+    templateType: NetworkChaos
+    deadline: 30m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 300ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 400ms-delay
+    templateType: NetworkChaos
+    deadline: 30m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 400ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 500ms-delay
+    templateType: NetworkChaos
+    deadline: 30m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 500ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 600ms-delay
+    templateType: NetworkChaos
+    deadline: 30m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: userhandlers
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 600ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all

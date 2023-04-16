@@ -12,6 +12,7 @@ class NetworkFault(Chaos):
         duration: str,
         mode: str,
         selector: SelectorStruct,
+        target_selector: SelectorStruct,
         action: Action,
         direction: Direction,
     ):
@@ -23,4 +24,5 @@ class NetworkFault(Chaos):
             "action": action_type,
             action_type: action.get_value(),
             "direction": direction.name.lower(),
+            "target": {"selector": target_selector.value, "mode": mode},
         }
