@@ -144,7 +144,7 @@ def gen_serial_network_delay(
             selector,
             target_selector,
             action,
-            Direction.BOTH,
+            Direction.TO,
         )
         all_chaos.append(network_fault)
         if pattern is Pattern.LINEAR:

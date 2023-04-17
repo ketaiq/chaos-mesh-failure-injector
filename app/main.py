@@ -21,7 +21,12 @@ def main():
     # gen_serial_network_delay(
     #     Pattern.LINEAR, 5, 36, "alms", "userhandlers", 50, 50, suspend=550
     # )
-    gen_serial_network_delay(Pattern.LINEAR, 30, 6, "alms", "userhandlers", 100, 100)
+    # gen_serial_network_delay(
+    #     Pattern.LINEAR, 10, 18, "alms", "scorm", 50, 50, suspend=10
+    # )
+    gen_serial_network_delay(
+        Pattern.LINEAR, 18, 10, "alms", "userapi", 50, 50, suspend=10
+    )
 
 
 if __name__ == "__main__":
