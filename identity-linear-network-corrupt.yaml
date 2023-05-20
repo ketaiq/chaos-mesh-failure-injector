@@ -1,0 +1,568 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: Workflow
+metadata:
+  namespace: alms
+  name: identity-linear-network-corrupt
+spec:
+  entry: entry
+  templates:
+  - name: entry
+    templateType: Serial
+    deadline: 2h30m
+    children:
+    - suspending1
+    - 10-corrupt
+    - 15-corrupt
+    - 20-corrupt
+    - 25-corrupt
+    - 30-corrupt
+    - 35-corrupt
+    - 40-corrupt
+    - 45-corrupt
+    - 50-corrupt
+    - 55-corrupt
+    - 60-corrupt
+    - 65-corrupt
+    - 70-corrupt
+    - 75-corrupt
+    - 80-corrupt
+    - 85-corrupt
+    - 85-corrupt
+    - 85-corrupt
+    - 85-corrupt
+    - 85-corrupt
+    - 85-corrupt
+    - 85-corrupt
+    - 85-corrupt
+    - 85-corrupt
+  - name: suspending1
+    templateType: Suspend
+    deadline: 30m
+  - name: 10-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '10'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 15-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '15'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 20-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '20'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 25-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '25'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 30-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '30'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 35-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '35'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 40-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '40'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 45-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '45'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 50-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '50'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 55-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '55'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 60-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '60'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 65-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '65'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 70-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '70'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 75-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '75'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 80-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '80'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 85-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '85'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 85-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '85'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 85-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '85'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 85-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '85'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 85-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '85'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 85-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '85'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 85-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '85'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 85-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '85'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all
+  - name: 85-corrupt
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: identity
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: corrupt
+      corrupt:
+        corrupt: '85'
+        correlation: '0'
+      direction: to
+      target:
+        selector:
+          namespaces:
+          - alms
+        mode: all

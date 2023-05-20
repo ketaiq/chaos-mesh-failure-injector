@@ -25,12 +25,14 @@ class MemoryStressor(Stressor):
 class CPUStressor(Stressor):
     """Specifies the CPU stress."""
 
-    def __init__(self, workers: int, load: int = 1):
+    def __init__(self, workers: int, load: int = 100):
+        self.workers = workers
+        self.load = load
         super().__init__({"cpu": {"workers": workers, "load": load}})
 
     @classmethod
     def calculate_config(cls, value: int):
-        if value <= 100:
-            return cls(value)
+        if value < 100:
+            return cls(value // 10, 10)
         else:
-            return cls(100, value // 100)
+            return cls(value // 50, 50)

@@ -1,4 +1,4 @@
-from app.chaos.network.action import DelayAction
+from app.chaos.network.action import CorruptAction, DelayAction, LossAction
 from app.chaos.network.direction import Direction
 from app.chaos.network.network_fault import NetworkFault
 from app.chaos.stress.type import StressorType
@@ -115,7 +115,7 @@ def gen_serial_stress(
     w.dump_yaml()
 
 
-def gen_serial_network_delay(
+def gen_serial_cpu_stress(
     pattern: Pattern,
     single_duration: int,
     num_task: int,
@@ -124,6 +124,126 @@ def gen_serial_network_delay(
     init_value: int,
     increment: int = 0,
     max_value: int = 0,
+    suspend: int = 0,
+):
+    all_chaos = gen_serial_suspend(suspend)
+    mode = Mode.ALL.value
+    ls = LabelSelector({Label.NAME.value: label})
+    ns = NamespaceSelector(namespace)
+    ps = PodPhaseSelector(PodPhase.Running.name)
+    selector = SelectorStruct(ns, ls, ps)
+    value = init_value
+    for _ in range(num_task):
+        stressor = CPUStressor(value, 50)
+        stress = Stress(
+            f"{stressor.workers}workers-{stressor.load}load-cpu",
+            f"{single_duration}m",
+            mode,
+            stressor,
+            selector,
+        )
+        if pattern is Pattern.LINEAR:
+            # linearly increase the value
+            value += increment
+        elif pattern is Pattern.EXPONENTIAL:
+            # exponentially increase the value
+            value *= increment
+        elif pattern is Pattern.CONSTANT:
+            # keep value as the initial value
+            value = init_value
+        elif pattern is Pattern.RANDOM:
+            # randomly choose between the initial value and the maximum value
+            value = random.randint(init_value, max_value)
+        value = int(value)
+        all_chaos.append(stress)
+
+    workflow_name = f"{label}-{pattern.name.lower()}-cpu-stress"
+    total_duration = single_duration * num_task + suspend
+    if not suspend:
+        workflow_name += "-without-suspend"
+    w = Workflow(
+        namespace,
+        workflow_name,
+        TaskType.Serial.name,
+        convert_duration(total_duration),
+        all_chaos,
+    )
+    w.dump_yaml()
+
+
+def gen_serial_memory_stress(
+    pattern: Pattern,
+    single_duration: int,
+    num_task: int,
+    namespace: str,
+    label: str,
+    init_value: int,
+    value_increment: int = 0,
+    max_value: int = 0,
+    suspend: int = 0,
+    is_percentage: bool = False,
+):
+    all_chaos = gen_serial_suspend(suspend)
+    mode = Mode.ALL.value
+    ls = LabelSelector({Label.NAME.value: label})
+    ns = NamespaceSelector(namespace)
+    ps = PodPhaseSelector(PodPhase.Running.name)
+    selector = SelectorStruct(ns, ls, ps)
+    value = init_value
+    for _ in range(num_task):
+        if value > 50:
+            time = "30s"
+        else:
+            time = None
+        if is_percentage:
+            stressor = MemoryStressor(f"{value}%", time=time, oomScoreAdj=-1000)
+            stress = Stress(
+                f"{value}percent-mem", f"{single_duration}m", mode, stressor, selector
+            )
+        else:
+            stressor = MemoryStressor(f"{value}MB", time=time, oomScoreAdj=-1000)
+            stress = Stress(
+                f"{value}mb-mem", f"{single_duration}m", mode, stressor, selector
+            )
+
+        if pattern is Pattern.LINEAR:
+            # linearly increase the value
+            value += value_increment
+        elif pattern is Pattern.EXPONENTIAL:
+            # exponentially increase the value
+            value *= value_increment
+        elif pattern is Pattern.CONSTANT:
+            # keep value as the initial value
+            value = init_value
+        elif pattern is Pattern.RANDOM:
+            # randomly choose between the initial value and the maximum value
+            value = random.randint(init_value, max_value)
+        value = int(value)
+        all_chaos.append(stress)
+
+    workflow_name = f"{label}-{pattern.name.lower()}-memory-stress"
+    total_duration = single_duration * num_task + suspend
+    if not suspend:
+        workflow_name += "-without-suspend"
+    w = Workflow(
+        namespace,
+        workflow_name,
+        TaskType.Serial.name,
+        convert_duration(total_duration),
+        all_chaos,
+    )
+    w.dump_yaml()
+
+
+def gen_serial_network_delay(
+    pattern: Pattern,
+    single_duration: int,
+    num_task: int,
+    namespace: str,
+    label: str,
+    init_value: int,
+    increment: int = 0,
+    max_value: int = None,
     suspend: int = 0,
 ):
     all_chaos = gen_serial_suspend(suspend)
@@ -150,6 +270,8 @@ def gen_serial_network_delay(
         if pattern is Pattern.LINEAR:
             # linearly increase the value
             value += increment
+            if max_value is not None and value > max_value:
+                value = max_value
         elif pattern is Pattern.EXPONENTIAL:
             # exponentially increase the value
             value *= increment
@@ -162,6 +284,128 @@ def gen_serial_network_delay(
         value = int(value)
 
     workflow_name = f"{label}-{pattern.name.lower()}-network-delay"
+    total_duration = single_duration * num_task + suspend
+    w = Workflow(
+        namespace,
+        workflow_name,
+        TaskType.Serial.name,
+        convert_duration(total_duration),
+        all_chaos,
+    )
+    w.dump_yaml()
+
+
+def gen_serial_network_loss(
+    pattern: Pattern,
+    single_duration: int,
+    num_task: int,
+    namespace: str,
+    label: str,
+    init_value: int,
+    increment: int = 0,
+    max_value: int = 0,
+    suspend: int = 0,
+):
+    all_chaos = gen_serial_suspend(suspend)
+    mode = Mode.ALL.value
+    ls = LabelSelector({Label.NAME.value: label})
+    ns = NamespaceSelector(namespace)
+    ps = PodPhaseSelector(PodPhase.Running.name)
+    selector = SelectorStruct(ns, ls, ps)
+    target_selector = SelectorStruct(ns)
+    value = init_value
+
+    for _ in range(num_task):
+        action = LossAction(str(value), "0")
+        network_fault = NetworkFault(
+            f"{value}-loss",
+            f"{single_duration}m",
+            mode,
+            selector,
+            target_selector,
+            action,
+            Direction.TO,
+        )
+        all_chaos.append(network_fault)
+        if pattern is Pattern.LINEAR:
+            # linearly increase the value
+            value += increment
+            if value > 95:
+                value = 95
+        elif pattern is Pattern.EXPONENTIAL:
+            # exponentially increase the value
+            value *= increment
+        elif pattern is Pattern.CONSTANT:
+            # keep value as the initial value
+            value = init_value
+        elif pattern is Pattern.RANDOM:
+            # randomly choose between the initial value and the maximum value
+            value = random.randint(init_value, max_value)
+        value = int(value)
+
+    workflow_name = f"{label}-{pattern.name.lower()}-network-loss"
+    total_duration = single_duration * num_task + suspend
+    w = Workflow(
+        namespace,
+        workflow_name,
+        TaskType.Serial.name,
+        convert_duration(total_duration),
+        all_chaos,
+    )
+    w.dump_yaml()
+
+
+def gen_serial_network_corrupt(
+    pattern: Pattern,
+    single_duration: int,
+    num_task: int,
+    namespace: str,
+    label: str,
+    init_value: int,
+    increment: int = 0,
+    max_value: int = None,
+    suspend: int = 0,
+):
+    all_chaos = gen_serial_suspend(suspend)
+    mode = Mode.ALL.value
+    ls = LabelSelector({Label.NAME.value: label})
+    ns = NamespaceSelector(namespace)
+    ps = PodPhaseSelector(PodPhase.Running.name)
+    selector = SelectorStruct(ns, ls, ps)
+    target_selector = SelectorStruct(ns)
+    value = init_value
+
+    for _ in range(num_task):
+        action = CorruptAction(str(value), "0")
+        network_fault = NetworkFault(
+            f"{value}-corrupt",
+            f"{single_duration}m",
+            mode,
+            selector,
+            target_selector,
+            action,
+            Direction.TO,
+        )
+        all_chaos.append(network_fault)
+        if pattern is Pattern.LINEAR:
+            # linearly increase the value
+            value += increment
+            if max_value is not None and value > max_value:
+                value = max_value
+            if value > 100:
+                value = 100
+        elif pattern is Pattern.EXPONENTIAL:
+            # exponentially increase the value
+            value *= increment
+        elif pattern is Pattern.CONSTANT:
+            # keep value as the initial value
+            value = init_value
+        elif pattern is Pattern.RANDOM:
+            # randomly choose between the initial value and the maximum value
+            value = random.randint(init_value, max_value)
+        value = int(value)
+
+    workflow_name = f"{label}-{pattern.name.lower()}-network-corrupt"
     total_duration = single_duration * num_task + suspend
     w = Workflow(
         namespace,
