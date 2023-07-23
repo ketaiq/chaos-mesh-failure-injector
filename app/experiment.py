@@ -2,7 +2,7 @@ from app.chaos.network.action import CorruptAction, DelayAction, LossAction
 from app.chaos.network.direction import Direction
 from app.chaos.network.network_fault import NetworkFault
 from app.chaos.stress.type import StressorType
-import random
+import random, datetime
 from app.chaos.mode import Mode
 from app.chaos.stress.config import (
     MemoryStressorConfig,
@@ -345,6 +345,63 @@ def gen_serial_network_loss(
 
     workflow_name = f"{label}-{pattern.name.lower()}-network-loss"
     total_duration = single_duration * num_task + suspend
+    w = Workflow(
+        namespace,
+        workflow_name,
+        TaskType.Serial.name,
+        convert_duration(total_duration),
+        all_chaos,
+    )
+    w.dump_yaml()
+
+
+def _gen_serial_network_loss(
+    pattern: Pattern, namespace: str, label: str, rates: list, periods: list
+):
+    """
+    Generates a serial workflow to simulate network loss.
+
+    Parameters
+    ----------
+    pattern : Pattern
+        chosen pattern of change of stress
+    namespace : str
+    label : str
+    rates : list
+        list of integers indicating the intensity of injected failures
+    periods : list
+        list of integers indicating the number of minutes for each task, index 0 indicates time of suspending, index 1 indicates time of the first task
+    """
+    all_chaos = gen_serial_suspend(periods[0])
+    mode = Mode.ALL.value
+    ls = LabelSelector({Label.NAME.value: label})
+    ns = NamespaceSelector(namespace)
+    ps = PodPhaseSelector(PodPhase.Running.name)
+    selector = SelectorStruct(ns, ls, ps)
+    target_selector = SelectorStruct(ns)
+
+    if len(rates) + 1 != len(periods):
+        print("rates and periods are not aligned!")
+        return
+
+    for i in range(len(rates)):
+        value = rates[i]
+        duration = periods[i + 1]
+        action = LossAction(str(value), "0")
+        network_fault = NetworkFault(
+            f"{value}-loss",
+            f"{duration}m",
+            mode,
+            selector,
+            target_selector,
+            action,
+            Direction.TO,
+        )
+        all_chaos.append(network_fault)
+
+    time_suffix = datetime.datetime.now().strftime("%m%d%H")
+    workflow_name = f"{label}-{pattern.name.lower()}-network-loss-{time_suffix}"
+    total_duration = sum(periods)
     w = Workflow(
         namespace,
         workflow_name,

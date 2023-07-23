@@ -1,5 +1,6 @@
 from app.chaos.stress.config import CPUStressorConfig
 from app.experiment import (
+    _gen_serial_network_loss,
     gen_linear_memory_stress,
     gen_linear_cpu_stress,
     gen_linear_cpu_stress_without_suspend,
@@ -63,9 +64,9 @@ def main():
     #     Pattern.LINEAR, 1, 120, "alms", "userapi", 5, 5, suspend=30
     # )
 
-    gen_serial_network_corrupt(
-        Pattern.LINEAR, 5, 24, "alms", "identity", 10, 5, suspend=30, max_value=85
-    )
+    # gen_serial_network_corrupt(
+    #     Pattern.LINEAR, 5, 24, "alms", "identity", 10, 5, suspend=30, max_value=85
+    # )
 
     # gen_serial_network_loss(Pattern.LINEAR, 5, 24, "alms", "userapi", 20, 5, suspend=30)
     # gen_serial_network_loss(Pattern.LINEAR, 10, 12, "alms", "userapi", 10, 10, suspend=30)
@@ -73,6 +74,10 @@ def main():
     # gen_serial_network_delay(
     #     Pattern.LINEAR, 10, 12, "alms", "userapi", 1000, 500, suspend=30, max_value=5000
     # )
+
+    _gen_serial_network_loss(
+        Pattern.LINEAR, "alms", "userapi", [50, 60, 70, 80], [120, 30, 30, 30, 30]
+    )
 
 
 if __name__ == "__main__":
