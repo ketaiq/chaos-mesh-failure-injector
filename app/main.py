@@ -1,11 +1,14 @@
+from app.chaos.network.direction import Direction
 from app.chaos.stress.config import CPUStressorConfig
 from app.experiment import (
     _gen_serial_network_loss,
     gen_linear_memory_stress,
     gen_linear_cpu_stress,
     gen_linear_cpu_stress_without_suspend,
+    gen_network_duplicate,
     gen_serial_cpu_stress,
     gen_serial_memory_stress,
+    gen_serial_network_bandwidth,
     gen_serial_network_corrupt,
     gen_serial_network_delay,
     gen_serial_network_loss,
@@ -13,6 +16,8 @@ from app.experiment import (
 from app.pattern import Pattern
 from app.utils.string import print_failure_period
 from datetime import timedelta
+
+from app.workflow.task_type import TaskType
 
 
 def main():
@@ -50,7 +55,7 @@ def main():
 
     # gen_serial_cpu_stress(Pattern.CONSTANT, 5, 24, "alms", "userapi", 500, suspend=30)
 
-    # gen_serial_cpu_stress(Pattern.LINEAR, 5, 24, "alms", "userapi", 10, 5, suspend=30)
+    # gen_serial_cpu_stress(Pattern.LINEAR, 5, 24, "alms", "redis", 10, 5, suspend=30)
 
     # gen_serial_memory_stress(
     #     Pattern.CONSTANT, 5, 24, "alms", "userapi", 320, suspend=30
@@ -60,12 +65,10 @@ def main():
     #     Pattern.LINEAR, 5, 24, "alms", "userapi", 290, 2, suspend=30
     # )
 
-    # gen_serial_memory_stress(
-    #     Pattern.LINEAR, 1, 120, "alms", "userapi", 5, 5, suspend=30
-    # )
+    # gen_serial_memory_stress(Pattern.LINEAR, 1, 120, "alms", "redis", 5, 5, suspend=30)
 
     # gen_serial_network_corrupt(
-    #     Pattern.LINEAR, 5, 24, "alms", "identity", 10, 5, suspend=30, max_value=85
+    #     Pattern.LINEAR, 5, 24, "alms", "redis", 20, 5, suspend=30, max_value=70
     # )
 
     # gen_serial_network_loss(Pattern.LINEAR, 5, 24, "alms", "userapi", 20, 5, suspend=30)
@@ -75,9 +78,55 @@ def main():
     #     Pattern.LINEAR, 10, 12, "alms", "userapi", 1000, 500, suspend=30, max_value=5000
     # )
 
-    _gen_serial_network_loss(
-        Pattern.LINEAR, "alms", "userapi", [50, 60, 70, 80], [120, 30, 30, 30, 30]
+    # _gen_serial_network_loss(
+    #     Pattern.LINEAR, "alms", "userapi", [50, 60, 70, 80], [120, 30, 30, 30, 30]
+    # )
+
+    # gen_network_duplicate(
+    #     TaskType.Serial.name,
+    #     Pattern.LINEAR,
+    #     10,
+    #     12,
+    #     "alms",
+    #     "userapi",
+    #     50,
+    #     50,
+    #     suspend=30,
+    #     max_value=100,
+    # )
+
+    # gen_serial_network_bandwidth(
+    #     Pattern.LINEAR, 10, 12, "alms", "userapi", 5000, 500, min_value=1, suspend=30
+    # )
+
+    gen_serial_network_corrupt(
+        Pattern.LINEAR, 10, 18, "alms", "redis", 20, 5, suspend=30, max_value=90
     )
+
+    # gen_serial_network_loss(
+    #     Pattern.LINEAR,
+    #     Direction.BOTH,
+    #     10,
+    #     18,
+    #     "alms",
+    #     "redis",
+    #     20,
+    #     5,
+    #     suspend=30,
+    # )
+
+    # gen_serial_network_delay(
+    #     Pattern.LINEAR,
+    #     Direction.BOTH,
+    #     10,
+    #     18,
+    #     "alms",
+    #     "redis",
+    #     1000,
+    #     500,
+    #     suspend=30,
+    #     max_value=10000,
+    # )
 
 
 if __name__ == "__main__":

@@ -2,37 +2,31 @@ apiVersion: chaos-mesh.org/v1alpha1
 kind: Workflow
 metadata:
   namespace: alms
-  name: scorm-linear-network-delay
+  name: linear-network-delay-learner
 spec:
   entry: entry
   templates:
   - name: entry
     templateType: Serial
-    deadline: 3h10m
+    deadline: 2h30m
     children:
     - suspending1
-    - 50ms-delay
-    - 100ms-delay
-    - 150ms-delay
-    - 200ms-delay
-    - 250ms-delay
-    - 300ms-delay
-    - 350ms-delay
-    - 400ms-delay
-    - 450ms-delay
-    - 500ms-delay
-    - 550ms-delay
-    - 600ms-delay
-    - 650ms-delay
-    - 700ms-delay
-    - 750ms-delay
-    - 800ms-delay
-    - 850ms-delay
-    - 900ms-delay
+    - 1000ms-delay
+    - 1500ms-delay
+    - 2000ms-delay
+    - 2500ms-delay
+    - 3000ms-delay
+    - 3500ms-delay
+    - 4000ms-delay
+    - 4500ms-delay
+    - 5000ms-delay
+    - 5000ms-delay
+    - 5000ms-delay
+    - 5000ms-delay
   - name: suspending1
     templateType: Suspend
-    deadline: 10m
-  - name: 50ms-delay
+    deadline: 30m
+  - name: 1000ms-delay
     templateType: NetworkChaos
     deadline: 10m
     networkChaos:
@@ -40,13 +34,13 @@ spec:
         namespaces:
         - alms
         labelSelectors:
-          app.kubernetes.io/name: scorm
+          app.kubernetes.io/name: learner
         podPhaseSelectors:
         - Running
       mode: all
       action: delay
       delay:
-        latency: 50ms
+        latency: 1000ms
         correlation: '0'
         jitter: 0ms
       direction: both
@@ -55,7 +49,7 @@ spec:
           namespaces:
           - alms
         mode: all
-  - name: 100ms-delay
+  - name: 1500ms-delay
     templateType: NetworkChaos
     deadline: 10m
     networkChaos:
@@ -63,13 +57,13 @@ spec:
         namespaces:
         - alms
         labelSelectors:
-          app.kubernetes.io/name: scorm
+          app.kubernetes.io/name: learner
         podPhaseSelectors:
         - Running
       mode: all
       action: delay
       delay:
-        latency: 100ms
+        latency: 1500ms
         correlation: '0'
         jitter: 0ms
       direction: both
@@ -78,7 +72,7 @@ spec:
           namespaces:
           - alms
         mode: all
-  - name: 150ms-delay
+  - name: 2000ms-delay
     templateType: NetworkChaos
     deadline: 10m
     networkChaos:
@@ -86,13 +80,13 @@ spec:
         namespaces:
         - alms
         labelSelectors:
-          app.kubernetes.io/name: scorm
+          app.kubernetes.io/name: learner
         podPhaseSelectors:
         - Running
       mode: all
       action: delay
       delay:
-        latency: 150ms
+        latency: 2000ms
         correlation: '0'
         jitter: 0ms
       direction: both
@@ -101,7 +95,7 @@ spec:
           namespaces:
           - alms
         mode: all
-  - name: 200ms-delay
+  - name: 2500ms-delay
     templateType: NetworkChaos
     deadline: 10m
     networkChaos:
@@ -109,13 +103,13 @@ spec:
         namespaces:
         - alms
         labelSelectors:
-          app.kubernetes.io/name: scorm
+          app.kubernetes.io/name: learner
         podPhaseSelectors:
         - Running
       mode: all
       action: delay
       delay:
-        latency: 200ms
+        latency: 2500ms
         correlation: '0'
         jitter: 0ms
       direction: both
@@ -124,7 +118,7 @@ spec:
           namespaces:
           - alms
         mode: all
-  - name: 250ms-delay
+  - name: 3000ms-delay
     templateType: NetworkChaos
     deadline: 10m
     networkChaos:
@@ -132,13 +126,13 @@ spec:
         namespaces:
         - alms
         labelSelectors:
-          app.kubernetes.io/name: scorm
+          app.kubernetes.io/name: learner
         podPhaseSelectors:
         - Running
       mode: all
       action: delay
       delay:
-        latency: 250ms
+        latency: 3000ms
         correlation: '0'
         jitter: 0ms
       direction: both
@@ -147,7 +141,7 @@ spec:
           namespaces:
           - alms
         mode: all
-  - name: 300ms-delay
+  - name: 3500ms-delay
     templateType: NetworkChaos
     deadline: 10m
     networkChaos:
@@ -155,13 +149,13 @@ spec:
         namespaces:
         - alms
         labelSelectors:
-          app.kubernetes.io/name: scorm
+          app.kubernetes.io/name: learner
         podPhaseSelectors:
         - Running
       mode: all
       action: delay
       delay:
-        latency: 300ms
+        latency: 3500ms
         correlation: '0'
         jitter: 0ms
       direction: both
@@ -170,7 +164,7 @@ spec:
           namespaces:
           - alms
         mode: all
-  - name: 350ms-delay
+  - name: 4000ms-delay
     templateType: NetworkChaos
     deadline: 10m
     networkChaos:
@@ -178,13 +172,13 @@ spec:
         namespaces:
         - alms
         labelSelectors:
-          app.kubernetes.io/name: scorm
+          app.kubernetes.io/name: learner
         podPhaseSelectors:
         - Running
       mode: all
       action: delay
       delay:
-        latency: 350ms
+        latency: 4000ms
         correlation: '0'
         jitter: 0ms
       direction: both
@@ -193,7 +187,7 @@ spec:
           namespaces:
           - alms
         mode: all
-  - name: 400ms-delay
+  - name: 4500ms-delay
     templateType: NetworkChaos
     deadline: 10m
     networkChaos:
@@ -201,13 +195,13 @@ spec:
         namespaces:
         - alms
         labelSelectors:
-          app.kubernetes.io/name: scorm
+          app.kubernetes.io/name: learner
         podPhaseSelectors:
         - Running
       mode: all
       action: delay
       delay:
-        latency: 400ms
+        latency: 4500ms
         correlation: '0'
         jitter: 0ms
       direction: both
@@ -216,7 +210,7 @@ spec:
           namespaces:
           - alms
         mode: all
-  - name: 450ms-delay
+  - name: 5000ms-delay
     templateType: NetworkChaos
     deadline: 10m
     networkChaos:
@@ -224,13 +218,13 @@ spec:
         namespaces:
         - alms
         labelSelectors:
-          app.kubernetes.io/name: scorm
+          app.kubernetes.io/name: learner
         podPhaseSelectors:
         - Running
       mode: all
       action: delay
       delay:
-        latency: 450ms
+        latency: 5000ms
         correlation: '0'
         jitter: 0ms
       direction: both
@@ -239,7 +233,7 @@ spec:
           namespaces:
           - alms
         mode: all
-  - name: 500ms-delay
+  - name: 5000ms-delay
     templateType: NetworkChaos
     deadline: 10m
     networkChaos:
@@ -247,13 +241,13 @@ spec:
         namespaces:
         - alms
         labelSelectors:
-          app.kubernetes.io/name: scorm
+          app.kubernetes.io/name: learner
         podPhaseSelectors:
         - Running
       mode: all
       action: delay
       delay:
-        latency: 500ms
+        latency: 5000ms
         correlation: '0'
         jitter: 0ms
       direction: both
@@ -262,7 +256,7 @@ spec:
           namespaces:
           - alms
         mode: all
-  - name: 550ms-delay
+  - name: 5000ms-delay
     templateType: NetworkChaos
     deadline: 10m
     networkChaos:
@@ -270,13 +264,13 @@ spec:
         namespaces:
         - alms
         labelSelectors:
-          app.kubernetes.io/name: scorm
+          app.kubernetes.io/name: learner
         podPhaseSelectors:
         - Running
       mode: all
       action: delay
       delay:
-        latency: 550ms
+        latency: 5000ms
         correlation: '0'
         jitter: 0ms
       direction: both
@@ -285,7 +279,7 @@ spec:
           namespaces:
           - alms
         mode: all
-  - name: 600ms-delay
+  - name: 5000ms-delay
     templateType: NetworkChaos
     deadline: 10m
     networkChaos:
@@ -293,151 +287,13 @@ spec:
         namespaces:
         - alms
         labelSelectors:
-          app.kubernetes.io/name: scorm
+          app.kubernetes.io/name: learner
         podPhaseSelectors:
         - Running
       mode: all
       action: delay
       delay:
-        latency: 600ms
-        correlation: '0'
-        jitter: 0ms
-      direction: both
-      target:
-        selector:
-          namespaces:
-          - alms
-        mode: all
-  - name: 650ms-delay
-    templateType: NetworkChaos
-    deadline: 10m
-    networkChaos:
-      selector:
-        namespaces:
-        - alms
-        labelSelectors:
-          app.kubernetes.io/name: scorm
-        podPhaseSelectors:
-        - Running
-      mode: all
-      action: delay
-      delay:
-        latency: 650ms
-        correlation: '0'
-        jitter: 0ms
-      direction: both
-      target:
-        selector:
-          namespaces:
-          - alms
-        mode: all
-  - name: 700ms-delay
-    templateType: NetworkChaos
-    deadline: 10m
-    networkChaos:
-      selector:
-        namespaces:
-        - alms
-        labelSelectors:
-          app.kubernetes.io/name: scorm
-        podPhaseSelectors:
-        - Running
-      mode: all
-      action: delay
-      delay:
-        latency: 700ms
-        correlation: '0'
-        jitter: 0ms
-      direction: both
-      target:
-        selector:
-          namespaces:
-          - alms
-        mode: all
-  - name: 750ms-delay
-    templateType: NetworkChaos
-    deadline: 10m
-    networkChaos:
-      selector:
-        namespaces:
-        - alms
-        labelSelectors:
-          app.kubernetes.io/name: scorm
-        podPhaseSelectors:
-        - Running
-      mode: all
-      action: delay
-      delay:
-        latency: 750ms
-        correlation: '0'
-        jitter: 0ms
-      direction: both
-      target:
-        selector:
-          namespaces:
-          - alms
-        mode: all
-  - name: 800ms-delay
-    templateType: NetworkChaos
-    deadline: 10m
-    networkChaos:
-      selector:
-        namespaces:
-        - alms
-        labelSelectors:
-          app.kubernetes.io/name: scorm
-        podPhaseSelectors:
-        - Running
-      mode: all
-      action: delay
-      delay:
-        latency: 800ms
-        correlation: '0'
-        jitter: 0ms
-      direction: both
-      target:
-        selector:
-          namespaces:
-          - alms
-        mode: all
-  - name: 850ms-delay
-    templateType: NetworkChaos
-    deadline: 10m
-    networkChaos:
-      selector:
-        namespaces:
-        - alms
-        labelSelectors:
-          app.kubernetes.io/name: scorm
-        podPhaseSelectors:
-        - Running
-      mode: all
-      action: delay
-      delay:
-        latency: 850ms
-        correlation: '0'
-        jitter: 0ms
-      direction: both
-      target:
-        selector:
-          namespaces:
-          - alms
-        mode: all
-  - name: 900ms-delay
-    templateType: NetworkChaos
-    deadline: 10m
-    networkChaos:
-      selector:
-        namespaces:
-        - alms
-        labelSelectors:
-          app.kubernetes.io/name: scorm
-        podPhaseSelectors:
-        - Running
-      mode: all
-      action: delay
-      delay:
-        latency: 900ms
+        latency: 5000ms
         correlation: '0'
         jitter: 0ms
       direction: both

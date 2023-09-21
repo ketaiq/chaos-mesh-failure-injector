@@ -1,4 +1,10 @@
-from app.chaos.network.action import CorruptAction, DelayAction, LossAction
+from app.chaos.network.action import (
+    BandwidthAction,
+    CorruptAction,
+    DelayAction,
+    DuplicateAction,
+    LossAction,
+)
 from app.chaos.network.direction import Direction
 from app.chaos.network.network_fault import NetworkFault
 from app.chaos.stress.type import StressorType
@@ -235,8 +241,125 @@ def gen_serial_memory_stress(
     w.dump_yaml()
 
 
+def gen_network_duplicate(
+    process_type: TaskType,
+    pattern: Pattern,
+    single_duration: int,
+    num_task: int,
+    namespace: str,
+    label: str,
+    init_value: int,
+    increment: int = 0,
+    max_value: int = None,
+    suspend: int = 0,
+):
+    all_chaos = gen_serial_suspend(suspend)
+    mode = Mode.ALL.value
+    ls = LabelSelector({Label.NAME.value: label})
+    ns = NamespaceSelector(namespace)
+    ps = PodPhaseSelector(PodPhase.Running.name)
+    selector = SelectorStruct(ns, ls, ps)
+    target_selector = SelectorStruct(ns)
+    value = init_value
+    for _ in range(num_task):
+        action = DuplicateAction(str(value), "0")
+        network_fault = NetworkFault(
+            f"{value}percent-duplicate",
+            f"{single_duration}m",
+            mode,
+            selector,
+            target_selector,
+            action,
+            Direction.TO,
+        )
+        all_chaos.append(network_fault)
+        if pattern is Pattern.LINEAR:
+            # linearly increase the value
+            value += increment
+            if max_value is not None and value > max_value:
+                value = max_value
+        elif pattern is Pattern.EXPONENTIAL:
+            # exponentially increase the value
+            value *= increment
+        elif pattern is Pattern.CONSTANT:
+            # keep value as the initial value
+            value = init_value
+        elif pattern is Pattern.RANDOM:
+            # randomly choose between the initial value and the maximum value
+            value = random.randint(init_value, max_value)
+        value = int(value)
+
+    time_suffix = datetime.datetime.now().strftime("%m%d%H")
+    workflow_name = f"{label}-{pattern.name.lower()}-network-duplicate-{time_suffix}"
+    total_duration = single_duration * num_task + suspend
+    w = Workflow(
+        namespace,
+        workflow_name,
+        process_type,
+        convert_duration(total_duration),
+        all_chaos,
+    )
+    w.dump_yaml()
+
+
+def gen_serial_network_bandwidth(
+    pattern: Pattern,
+    single_duration: int,
+    num_task: int,
+    namespace: str,
+    label: str,
+    init_value: int,
+    decrement: int = 0,
+    min_value: int = None,
+    suspend: int = 0,
+):
+    all_chaos = gen_serial_suspend(suspend)
+    mode = Mode.ALL.value
+    ls = LabelSelector({Label.NAME.value: label})
+    ns = NamespaceSelector(namespace)
+    ps = PodPhaseSelector(PodPhase.Running.name)
+    selector = SelectorStruct(ns, ls, ps)
+    target_selector = SelectorStruct(ns)
+    value = init_value
+
+    for _ in range(num_task):
+        action = BandwidthAction(f"{value}kbps", 100, value * 100)
+        network_fault = NetworkFault(
+            f"{value}kbps-bandwidth",
+            f"{single_duration}m",
+            mode,
+            selector,
+            target_selector,
+            action,
+            Direction.TO,
+        )
+        all_chaos.append(network_fault)
+        if pattern is Pattern.LINEAR:
+            # linearly increase the value
+            value -= decrement
+            if min_value is not None and value < min_value:
+                value = min_value
+        elif pattern is Pattern.CONSTANT:
+            # keep value as the initial value
+            value = init_value
+        value = int(value)
+
+    time_suffix = datetime.datetime.now().strftime("%m%d%H")
+    workflow_name = f"{pattern.name.lower()}-network-bandwidth-{label}-{time_suffix}"
+    total_duration = single_duration * num_task + suspend
+    w = Workflow(
+        namespace,
+        workflow_name,
+        TaskType.Serial.name,
+        convert_duration(total_duration),
+        all_chaos,
+    )
+    w.dump_yaml()
+
+
 def gen_serial_network_delay(
     pattern: Pattern,
+    direction: Direction,
     single_duration: int,
     num_task: int,
     namespace: str,
@@ -264,7 +387,7 @@ def gen_serial_network_delay(
             selector,
             target_selector,
             action,
-            Direction.TO,
+            direction,
         )
         all_chaos.append(network_fault)
         if pattern is Pattern.LINEAR:
@@ -283,7 +406,7 @@ def gen_serial_network_delay(
             value = random.randint(init_value, max_value)
         value = int(value)
 
-    workflow_name = f"{label}-{pattern.name.lower()}-network-delay"
+    workflow_name = f"{pattern.name.lower()}-network-delay-{label}"
     total_duration = single_duration * num_task + suspend
     w = Workflow(
         namespace,
@@ -297,6 +420,7 @@ def gen_serial_network_delay(
 
 def gen_serial_network_loss(
     pattern: Pattern,
+    direction: Direction,
     single_duration: int,
     num_task: int,
     namespace: str,
@@ -324,7 +448,7 @@ def gen_serial_network_loss(
             selector,
             target_selector,
             action,
-            Direction.TO,
+            direction,
         )
         all_chaos.append(network_fault)
         if pattern is Pattern.LINEAR:
@@ -343,7 +467,7 @@ def gen_serial_network_loss(
             value = random.randint(init_value, max_value)
         value = int(value)
 
-    workflow_name = f"{label}-{pattern.name.lower()}-network-loss"
+    workflow_name = f"{pattern.name.lower()}-network-loss-{label}"
     total_duration = single_duration * num_task + suspend
     w = Workflow(
         namespace,
@@ -462,7 +586,8 @@ def gen_serial_network_corrupt(
             value = random.randint(init_value, max_value)
         value = int(value)
 
-    workflow_name = f"{label}-{pattern.name.lower()}-network-corrupt"
+    time_suffix = datetime.datetime.now().strftime("%m%d%H")
+    workflow_name = f"{pattern.name.lower()}-network-corrupt-{label}-{time_suffix}"
     total_duration = single_duration * num_task + suspend
     w = Workflow(
         namespace,

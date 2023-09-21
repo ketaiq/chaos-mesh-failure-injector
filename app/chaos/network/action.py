@@ -2,6 +2,7 @@ from enum import Enum, unique, auto
 from dataclasses import dataclass
 from typing import ClassVar
 
+
 @unique
 class ActionType(Enum):
     DELAY = auto()
@@ -36,8 +37,24 @@ class LossAction(Action):
     loss: str
     correlation: str
 
+
 @dataclass
 class CorruptAction(Action):
     TYPE: ClassVar[str] = ActionType.CORRUPT.name.lower()
     corrupt: str
     correlation: str
+
+
+@dataclass
+class DuplicateAction(Action):
+    TYPE: ClassVar[str] = ActionType.DUPLICATE.name.lower()
+    duplicate: str
+    correlation: str
+
+
+@dataclass
+class BandwidthAction(Action):
+    TYPE: ClassVar[str] = ActionType.BANDWIDTH.name.lower()
+    rate: str
+    limit: str
+    buffer: str
