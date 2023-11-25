@@ -12,7 +12,7 @@ class Label(Enum):
 
     See https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
     """
-
+    APP = "app"
     NAME = os.path.join(PREFIX, "name")
     INSTANCE = os.path.join(PREFIX, "instance")
     VERSION = os.path.join(PREFIX, "version")

@@ -14,6 +14,7 @@ from app.experiment import (
     gen_serial_network_loss,
 )
 from app.pattern import Pattern
+from app.selector.label import Label
 from app.utils.string import print_failure_period
 from datetime import timedelta
 
@@ -53,9 +54,11 @@ def main():
 
     # gen_serial_network_delay(Pattern.CONSTANT, 5, 24, "alms", "userapi", 2500, suspend=30)
 
-    # gen_serial_cpu_stress(Pattern.CONSTANT, 5, 24, "alms", "userapi", 500, suspend=30)
+    # gen_serial_cpu_stress(Pattern.CONSTANT, 5, 24, "alms", {Label.NAME.value: "userapi"}, 500, suspend=30)
 
-    # gen_serial_cpu_stress(Pattern.LINEAR, 5, 24, "alms", "redis", 10, 5, suspend=30)
+    # gen_serial_cpu_stress(
+    #     Pattern.LINEAR, 5, 24, "default", {Label.APP.value: "ts-auth-service"}, 10, 5, suspend=30
+    # )
 
     # gen_serial_memory_stress(
     #     Pattern.CONSTANT, 5, 24, "alms", "userapi", 320, suspend=30
@@ -65,7 +68,20 @@ def main():
     #     Pattern.LINEAR, 5, 24, "alms", "userapi", 290, 2, suspend=30
     # )
 
-    # gen_serial_memory_stress(Pattern.LINEAR, 1, 120, "alms", "redis", 5, 5, suspend=30)
+    # gen_serial_memory_stress(
+    #     Pattern.LINEAR, 1, 120, "default", {Label.APP.value: "ts-auth-service"}, 5, 5, suspend=30
+    # )
+
+    gen_serial_memory_stress(
+        Pattern.LINEAR,
+        2,
+        60,
+        "default",
+        {Label.APP.value: "ts-auth-service"},
+        100,
+        16,
+        suspend=30,
+    )
 
     # gen_serial_network_corrupt(
     #     Pattern.LINEAR, 5, 24, "alms", "redis", 20, 5, suspend=30, max_value=70
@@ -99,9 +115,9 @@ def main():
     #     Pattern.LINEAR, 10, 12, "alms", "userapi", 5000, 500, min_value=1, suspend=30
     # )
 
-    gen_serial_network_corrupt(
-        Pattern.LINEAR, 10, 18, "alms", "redis", 20, 5, suspend=30, max_value=90
-    )
+    # gen_serial_network_corrupt(
+    #     Pattern.LINEAR, 10, 18, "alms", "redis", 20, 5, suspend=30, max_value=90
+    # )
 
     # gen_serial_network_loss(
     #     Pattern.LINEAR,
@@ -119,13 +135,12 @@ def main():
     #     Pattern.LINEAR,
     #     Direction.BOTH,
     #     10,
-    #     18,
+    #     12,
     #     "alms",
-    #     "redis",
+    #     "identity",
     #     1000,
     #     500,
     #     suspend=30,
-    #     max_value=10000,
     # )
 
 

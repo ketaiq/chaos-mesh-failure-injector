@@ -126,7 +126,7 @@ def gen_serial_cpu_stress(
     single_duration: int,
     num_task: int,
     namespace: str,
-    label: str,
+    label: dict,
     init_value: int,
     increment: int = 0,
     max_value: int = 0,
@@ -134,7 +134,7 @@ def gen_serial_cpu_stress(
 ):
     all_chaos = gen_serial_suspend(suspend)
     mode = Mode.ALL.value
-    ls = LabelSelector({Label.NAME.value: label})
+    ls = LabelSelector(label)
     ns = NamespaceSelector(namespace)
     ps = PodPhaseSelector(PodPhase.Running.name)
     selector = SelectorStruct(ns, ls, ps)
@@ -163,7 +163,9 @@ def gen_serial_cpu_stress(
         value = int(value)
         all_chaos.append(stress)
 
-    workflow_name = f"{label}-{pattern.name.lower()}-cpu-stress"
+    time_suffix = datetime.datetime.now().strftime("%m%d%H")
+    service = list(label.values())[0]
+    workflow_name = f"{pattern.name.lower()}-cpu-stress-{service}-{time_suffix}"
     total_duration = single_duration * num_task + suspend
     if not suspend:
         workflow_name += "-without-suspend"
@@ -182,7 +184,7 @@ def gen_serial_memory_stress(
     single_duration: int,
     num_task: int,
     namespace: str,
-    label: str,
+    label: dict,
     init_value: int,
     value_increment: int = 0,
     max_value: int = 0,
@@ -191,7 +193,7 @@ def gen_serial_memory_stress(
 ):
     all_chaos = gen_serial_suspend(suspend)
     mode = Mode.ALL.value
-    ls = LabelSelector({Label.NAME.value: label})
+    ls = LabelSelector(label)
     ns = NamespaceSelector(namespace)
     ps = PodPhaseSelector(PodPhase.Running.name)
     selector = SelectorStruct(ns, ls, ps)
@@ -227,7 +229,9 @@ def gen_serial_memory_stress(
         value = int(value)
         all_chaos.append(stress)
 
-    workflow_name = f"{label}-{pattern.name.lower()}-memory-stress"
+    time_suffix = datetime.datetime.now().strftime("%m%d%H")
+    service = list(label.values())[0]
+    workflow_name = f"{pattern.name.lower()}-memory-stress-{service}-{time_suffix}"
     total_duration = single_duration * num_task + suspend
     if not suspend:
         workflow_name += "-without-suspend"

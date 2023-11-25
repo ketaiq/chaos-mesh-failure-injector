@@ -1,0 +1,1156 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: Workflow
+metadata:
+  namespace: default
+  name: linear-memory-stress-ts-auth-service-112220
+spec:
+  entry: entry
+  templates:
+  - name: entry
+    templateType: Serial
+    deadline: 2h30m
+    children:
+    - suspending1
+    - 100mb-mem
+    - 116mb-mem
+    - 132mb-mem
+    - 148mb-mem
+    - 164mb-mem
+    - 180mb-mem
+    - 196mb-mem
+    - 212mb-mem
+    - 228mb-mem
+    - 244mb-mem
+    - 260mb-mem
+    - 276mb-mem
+    - 292mb-mem
+    - 308mb-mem
+    - 324mb-mem
+    - 340mb-mem
+    - 356mb-mem
+    - 372mb-mem
+    - 388mb-mem
+    - 404mb-mem
+    - 420mb-mem
+    - 436mb-mem
+    - 452mb-mem
+    - 468mb-mem
+    - 484mb-mem
+    - 500mb-mem
+    - 516mb-mem
+    - 532mb-mem
+    - 548mb-mem
+    - 564mb-mem
+    - 580mb-mem
+    - 596mb-mem
+    - 612mb-mem
+    - 628mb-mem
+    - 644mb-mem
+    - 660mb-mem
+    - 676mb-mem
+    - 692mb-mem
+    - 708mb-mem
+    - 724mb-mem
+    - 740mb-mem
+    - 756mb-mem
+    - 772mb-mem
+    - 788mb-mem
+    - 804mb-mem
+    - 820mb-mem
+    - 836mb-mem
+    - 852mb-mem
+    - 868mb-mem
+    - 884mb-mem
+    - 900mb-mem
+    - 916mb-mem
+    - 932mb-mem
+    - 948mb-mem
+    - 964mb-mem
+    - 980mb-mem
+    - 996mb-mem
+    - 1012mb-mem
+    - 1028mb-mem
+    - 1044mb-mem
+  - name: suspending1
+    templateType: Suspend
+    deadline: 30m
+  - name: 100mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 100MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 116mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 116MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 132mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 132MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 148mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 148MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 164mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 164MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 180mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 180MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 196mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 196MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 212mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 212MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 228mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 228MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 244mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 244MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 260mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 260MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 276mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 276MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 292mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 292MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 308mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 308MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 324mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 324MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 340mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 340MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 356mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 356MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 372mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 372MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 388mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 388MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 404mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 404MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 420mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 420MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 436mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 436MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 452mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 452MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 468mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 468MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 484mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 484MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 500mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 500MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 516mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 516MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 532mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 532MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 548mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 548MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 564mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 564MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 580mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 580MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 596mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 596MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 612mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 612MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 628mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 628MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 644mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 644MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 660mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 660MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 676mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 676MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 692mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 692MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 708mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 708MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 724mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 724MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 740mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 740MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 756mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 756MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 772mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 772MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 788mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 788MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 804mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 804MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 820mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 820MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 836mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 836MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 852mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 852MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 868mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 868MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 884mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 884MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 900mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 900MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 916mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 916MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 932mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 932MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 948mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 948MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 964mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 964MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 980mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 980MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 996mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 996MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1012mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1012MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1028mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1028MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1044mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-auth-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1044MB
+          time: 30s
+          oomScoreAdj: -1000
