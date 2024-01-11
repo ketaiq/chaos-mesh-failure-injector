@@ -60,6 +60,17 @@ def main():
     #     Pattern.LINEAR, 5, 24, "default", {Label.APP.value: "ts-auth-service"}, 10, 5, suspend=30
     # )
 
+    # gen_serial_cpu_stress(
+    #     Pattern.LINEAR,
+    #     5,
+    #     24,
+    #     "alms",
+    #     {Label.NAME.value: "rui"},
+    #     10,
+    #     5,
+    #     suspend=30,
+    # )
+
     # gen_serial_memory_stress(
     #     Pattern.CONSTANT, 5, 24, "alms", "userapi", 320, suspend=30
     # )
@@ -72,14 +83,25 @@ def main():
     #     Pattern.LINEAR, 1, 120, "default", {Label.APP.value: "ts-auth-service"}, 5, 5, suspend=30
     # )
 
+    # gen_serial_memory_stress(
+    #     Pattern.LINEAR,
+    #     2,
+    #     60,
+    #     "default",
+    #     {Label.APP.value: "ts-auth-service"},
+    #     100,
+    #     16,
+    #     suspend=30,
+    # )
+
     gen_serial_memory_stress(
         Pattern.LINEAR,
-        2,
-        60,
-        "default",
-        {Label.APP.value: "ts-auth-service"},
-        100,
-        16,
+        1,
+        120,
+        "alms",
+        {Label.NAME.value: "mail-sender-web"},
+        5,
+        5,
         suspend=30,
     )
 
@@ -91,7 +113,56 @@ def main():
     # gen_serial_network_loss(Pattern.LINEAR, 10, 12, "alms", "userapi", 10, 10, suspend=30)
 
     # gen_serial_network_delay(
-    #     Pattern.LINEAR, 10, 12, "alms", "userapi", 1000, 500, suspend=30, max_value=5000
+    #     Pattern.LINEAR,
+    #     Direction.BOTH,
+    #     10,
+    #     12,
+    #     "alms",
+    #     {Label.NAME.value: "userhandlers"},
+    #     1000,
+    #     1000,
+    #     suspend=30,
+    #     max_value=10000,
+    # )
+
+    # gen_serial_network_delay(
+    #     Pattern.LINEAR,
+    #     Direction.BOTH,
+    #     10,
+    #     12,
+    #     "alms",
+    #     {Label.NAME.value: "identity"},
+    #     1000,
+    #     1000,
+    #     suspend=30,
+    #     max_value=10000,
+    # )
+
+    # gen_serial_network_delay(
+    #     Pattern.LINEAR,
+    #     Direction.BOTH,
+    #     10,
+    #     12,
+    #     "alms",
+    #     {Label.NAME.value: "scorm"},
+    #     1000,
+    #     1000,
+    #     suspend=30,
+    #     max_value=10000,
+    # )
+
+    # train ticket
+    # gen_serial_network_delay(
+    #     Pattern.LINEAR,
+    #     Direction.BOTH,
+    #     10,
+    #     12,
+    #     "default",
+    #     {Label.APP.value: "ts-auth-service"},
+    #     1000,
+    #     500,
+    #     suspend=30,
+    #     max_value=5000,
     # )
 
     # _gen_serial_network_loss(

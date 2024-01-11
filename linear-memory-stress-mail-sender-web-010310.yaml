@@ -1,0 +1,2286 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: Workflow
+metadata:
+  namespace: alms
+  name: linear-memory-stress-mail-sender-web-010310
+spec:
+  entry: entry
+  templates:
+  - name: entry
+    templateType: Serial
+    deadline: 2h30m
+    children:
+    - suspending1
+    - 5mb-mem
+    - 10mb-mem
+    - 15mb-mem
+    - 20mb-mem
+    - 25mb-mem
+    - 30mb-mem
+    - 35mb-mem
+    - 40mb-mem
+    - 45mb-mem
+    - 50mb-mem
+    - 55mb-mem
+    - 60mb-mem
+    - 65mb-mem
+    - 70mb-mem
+    - 75mb-mem
+    - 80mb-mem
+    - 85mb-mem
+    - 90mb-mem
+    - 95mb-mem
+    - 100mb-mem
+    - 105mb-mem
+    - 110mb-mem
+    - 115mb-mem
+    - 120mb-mem
+    - 125mb-mem
+    - 130mb-mem
+    - 135mb-mem
+    - 140mb-mem
+    - 145mb-mem
+    - 150mb-mem
+    - 155mb-mem
+    - 160mb-mem
+    - 165mb-mem
+    - 170mb-mem
+    - 175mb-mem
+    - 180mb-mem
+    - 185mb-mem
+    - 190mb-mem
+    - 195mb-mem
+    - 200mb-mem
+    - 205mb-mem
+    - 210mb-mem
+    - 215mb-mem
+    - 220mb-mem
+    - 225mb-mem
+    - 230mb-mem
+    - 235mb-mem
+    - 240mb-mem
+    - 245mb-mem
+    - 250mb-mem
+    - 255mb-mem
+    - 260mb-mem
+    - 265mb-mem
+    - 270mb-mem
+    - 275mb-mem
+    - 280mb-mem
+    - 285mb-mem
+    - 290mb-mem
+    - 295mb-mem
+    - 300mb-mem
+    - 305mb-mem
+    - 310mb-mem
+    - 315mb-mem
+    - 320mb-mem
+    - 325mb-mem
+    - 330mb-mem
+    - 335mb-mem
+    - 340mb-mem
+    - 345mb-mem
+    - 350mb-mem
+    - 355mb-mem
+    - 360mb-mem
+    - 365mb-mem
+    - 370mb-mem
+    - 375mb-mem
+    - 380mb-mem
+    - 385mb-mem
+    - 390mb-mem
+    - 395mb-mem
+    - 400mb-mem
+    - 405mb-mem
+    - 410mb-mem
+    - 415mb-mem
+    - 420mb-mem
+    - 425mb-mem
+    - 430mb-mem
+    - 435mb-mem
+    - 440mb-mem
+    - 445mb-mem
+    - 450mb-mem
+    - 455mb-mem
+    - 460mb-mem
+    - 465mb-mem
+    - 470mb-mem
+    - 475mb-mem
+    - 480mb-mem
+    - 485mb-mem
+    - 490mb-mem
+    - 495mb-mem
+    - 500mb-mem
+    - 505mb-mem
+    - 510mb-mem
+    - 515mb-mem
+    - 520mb-mem
+    - 525mb-mem
+    - 530mb-mem
+    - 535mb-mem
+    - 540mb-mem
+    - 545mb-mem
+    - 550mb-mem
+    - 555mb-mem
+    - 560mb-mem
+    - 565mb-mem
+    - 570mb-mem
+    - 575mb-mem
+    - 580mb-mem
+    - 585mb-mem
+    - 590mb-mem
+    - 595mb-mem
+    - 600mb-mem
+  - name: suspending1
+    templateType: Suspend
+    deadline: 30m
+  - name: 5mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 5MB
+          oomScoreAdj: -1000
+  - name: 10mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 10MB
+          oomScoreAdj: -1000
+  - name: 15mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 15MB
+          oomScoreAdj: -1000
+  - name: 20mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 20MB
+          oomScoreAdj: -1000
+  - name: 25mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 25MB
+          oomScoreAdj: -1000
+  - name: 30mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 30MB
+          oomScoreAdj: -1000
+  - name: 35mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 35MB
+          oomScoreAdj: -1000
+  - name: 40mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 40MB
+          oomScoreAdj: -1000
+  - name: 45mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 45MB
+          oomScoreAdj: -1000
+  - name: 50mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 50MB
+          oomScoreAdj: -1000
+  - name: 55mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 55MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 60mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 60MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 65mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 65MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 70mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 70MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 75mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 75MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 80mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 80MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 85mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 85MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 90mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 90MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 95mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 95MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 100mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 100MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 105mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 105MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 110mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 110MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 115mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 115MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 120mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 120MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 125mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 125MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 130mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 130MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 135mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 135MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 140mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 140MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 145mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 145MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 150mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 150MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 155mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 155MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 160mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 160MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 165mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 165MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 170mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 170MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 175mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 175MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 180mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 180MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 185mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 185MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 190mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 190MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 195mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 195MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 200mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 200MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 205mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 205MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 210mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 210MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 215mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 215MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 220mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 220MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 225mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 225MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 230mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 230MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 235mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 235MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 240mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 240MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 245mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 245MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 250mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 250MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 255mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 255MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 260mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 260MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 265mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 265MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 270mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 270MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 275mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 275MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 280mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 280MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 285mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 285MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 290mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 290MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 295mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 295MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 300mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 300MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 305mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 305MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 310mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 310MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 315mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 315MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 320mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 320MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 325mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 325MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 330mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 330MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 335mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 335MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 340mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 340MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 345mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 345MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 350mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 350MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 355mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 355MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 360mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 360MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 365mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 365MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 370mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 370MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 375mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 375MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 380mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 380MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 385mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 385MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 390mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 390MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 395mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 395MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 400mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 400MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 405mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 405MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 410mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 410MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 415mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 415MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 420mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 420MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 425mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 425MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 430mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 430MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 435mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 435MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 440mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 440MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 445mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 445MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 450mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 450MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 455mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 455MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 460mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 460MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 465mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 465MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 470mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 470MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 475mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 475MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 480mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 480MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 485mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 485MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 490mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 490MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 495mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 495MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 500mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 500MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 505mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 505MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 510mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 510MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 515mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 515MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 520mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 520MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 525mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 525MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 530mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 530MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 535mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 535MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 540mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 540MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 545mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 545MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 550mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 550MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 555mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 555MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 560mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 560MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 565mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 565MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 570mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 570MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 575mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 575MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 580mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 580MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 585mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 585MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 590mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 590MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 595mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 595MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 600mb-mem
+    templateType: StressChaos
+    deadline: 1m
+    stressChaos:
+      selector:
+        namespaces:
+        - alms
+        labelSelectors:
+          app.kubernetes.io/name: mail-sender-web
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 600MB
+          time: 30s
+          oomScoreAdj: -1000

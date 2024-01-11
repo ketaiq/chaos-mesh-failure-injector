@@ -367,7 +367,7 @@ def gen_serial_network_delay(
     single_duration: int,
     num_task: int,
     namespace: str,
-    label: str,
+    label: dict,
     init_value: int,
     increment: int = 0,
     max_value: int = None,
@@ -375,7 +375,7 @@ def gen_serial_network_delay(
 ):
     all_chaos = gen_serial_suspend(suspend)
     mode = Mode.ALL.value
-    ls = LabelSelector({Label.NAME.value: label})
+    ls = LabelSelector(label)
     ns = NamespaceSelector(namespace)
     ps = PodPhaseSelector(PodPhase.Running.name)
     selector = SelectorStruct(ns, ls, ps)
@@ -410,7 +410,9 @@ def gen_serial_network_delay(
             value = random.randint(init_value, max_value)
         value = int(value)
 
-    workflow_name = f"{pattern.name.lower()}-network-delay-{label}"
+    time_suffix = datetime.datetime.now().strftime("%m%d%H")
+    service = list(label.values())[0]
+    workflow_name = f"{pattern.name.lower()}-network-delay-{service}-{time_suffix}"
     total_duration = single_duration * num_task + suspend
     w = Workflow(
         namespace,
