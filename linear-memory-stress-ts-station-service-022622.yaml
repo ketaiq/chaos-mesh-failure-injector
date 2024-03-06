@@ -1,0 +1,1160 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: Workflow
+metadata:
+  namespace: default
+  name: linear-memory-stress-ts-station-service-022622
+spec:
+  entry: entry
+  templates:
+  - name: entry
+    templateType: Serial
+    deadline: 4h
+    children:
+    - suspending1
+    - suspending2
+    - 500mb-mem
+    - 530mb-mem
+    - 560mb-mem
+    - 590mb-mem
+    - 620mb-mem
+    - 650mb-mem
+    - 680mb-mem
+    - 710mb-mem
+    - 740mb-mem
+    - 770mb-mem
+    - 800mb-mem
+    - 830mb-mem
+    - 860mb-mem
+    - 890mb-mem
+    - 920mb-mem
+    - 950mb-mem
+    - 980mb-mem
+    - 1010mb-mem
+    - 1040mb-mem
+    - 1070mb-mem
+    - 1100mb-mem
+    - 1130mb-mem
+    - 1160mb-mem
+    - 1190mb-mem
+    - 1220mb-mem
+    - 1250mb-mem
+    - 1280mb-mem
+    - 1310mb-mem
+    - 1340mb-mem
+    - 1370mb-mem
+    - 1400mb-mem
+    - 1430mb-mem
+    - 1460mb-mem
+    - 1490mb-mem
+    - 1520mb-mem
+    - 1550mb-mem
+    - 1580mb-mem
+    - 1610mb-mem
+    - 1640mb-mem
+    - 1670mb-mem
+    - 1700mb-mem
+    - 1730mb-mem
+    - 1760mb-mem
+    - 1790mb-mem
+    - 1820mb-mem
+    - 1850mb-mem
+    - 1880mb-mem
+    - 1910mb-mem
+    - 1940mb-mem
+    - 1970mb-mem
+    - 2000mb-mem
+    - 2030mb-mem
+    - 2060mb-mem
+    - 2090mb-mem
+    - 2120mb-mem
+    - 2150mb-mem
+    - 2180mb-mem
+    - 2210mb-mem
+    - 2240mb-mem
+    - 2270mb-mem
+  - name: suspending1
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending2
+    templateType: Suspend
+    deadline: 1h
+  - name: 500mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 500MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 530mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 530MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 560mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 560MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 590mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 590MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 620mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 620MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 650mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 650MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 680mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 680MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 710mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 710MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 740mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 740MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 770mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 770MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 800mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 800MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 830mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 830MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 860mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 860MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 890mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 890MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 920mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 920MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 950mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 950MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 980mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 980MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1010mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1010MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1040mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1040MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1070mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1070MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1100mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1100MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1130mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1130MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1160mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1160MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1190mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1190MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1220mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1220MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1250mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1250MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1280mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1280MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1310mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1310MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1340mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1340MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1370mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1370MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1400mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1400MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1430mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1430MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1460mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1460MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1490mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1490MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1520mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1520MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1550mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1550MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1580mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1580MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1610mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1610MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1640mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1640MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1670mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1670MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1700mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1700MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1730mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1730MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1760mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1760MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1790mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1790MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1820mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1820MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1850mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1850MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1880mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1880MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1910mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1910MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1940mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1940MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 1970mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 1970MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 2000mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 2000MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 2030mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 2030MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 2060mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 2060MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 2090mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 2090MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 2120mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 2120MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 2150mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 2150MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 2180mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 2180MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 2210mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 2210MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 2240mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 2240MB
+          time: 30s
+          oomScoreAdj: -1000
+  - name: 2270mb-mem
+    templateType: StressChaos
+    deadline: 2m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        memory:
+          workers: 3
+          size: 2270MB
+          time: 30s
+          oomScoreAdj: -1000

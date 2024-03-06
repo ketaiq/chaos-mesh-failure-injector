@@ -21,7 +21,44 @@ from datetime import timedelta
 from app.workflow.task_type import TaskType
 
 
+def inject_failure_in_train_ticket():
+    # CPU stress
+    # gen_serial_cpu_stress(
+    #     Pattern.LINEAR,
+    #     5,
+    #     24,
+    #     "default",
+    #     {Label.APP.value: "ts-train-service"},
+    #     10,
+    #     10,
+    #     suspend=120,
+    # )
+    gen_serial_memory_stress(
+        Pattern.LINEAR,
+        2,
+        60,
+        "default",
+        {Label.APP.value: "ts-station-service"},
+        500,
+        30,
+        suspend=120,
+    )
+    gen_serial_network_delay(
+        Pattern.LINEAR,
+        Direction.BOTH,
+        5,
+        24,
+        "default",
+        {Label.APP.value: "ts-train-service"},
+        1000,
+        1000,
+        suspend=120,
+        max_value=30000,
+    )
+
+
 def main():
+    inject_failure_in_train_ticket()
     # gen_linear_memory_stress("identity")
     # gen_linear_memory_stress("userhandlers")
     # gen_linear_cpu_stress("identity")
@@ -94,16 +131,16 @@ def main():
     #     suspend=30,
     # )
 
-    gen_serial_memory_stress(
-        Pattern.LINEAR,
-        1,
-        120,
-        "alms",
-        {Label.NAME.value: "mail-sender-web"},
-        5,
-        5,
-        suspend=30,
-    )
+    # gen_serial_memory_stress(
+    #     Pattern.LINEAR,
+    #     1,
+    #     120,
+    #     "alms",
+    #     {Label.NAME.value: "mail-sender-web"},
+    #     5,
+    #     5,
+    #     suspend=30,
+    # )
 
     # gen_serial_network_corrupt(
     #     Pattern.LINEAR, 5, 24, "alms", "redis", 20, 5, suspend=30, max_value=70

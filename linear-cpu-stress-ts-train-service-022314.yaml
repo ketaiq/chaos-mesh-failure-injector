@@ -1,0 +1,428 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: Workflow
+metadata:
+  namespace: default
+  name: linear-cpu-stress-ts-train-service-022314
+spec:
+  entry: entry
+  templates:
+  - name: entry
+    templateType: Serial
+    deadline: 4h
+    children:
+    - suspending1
+    - suspending2
+    - 10workers-50load-cpu
+    - 20workers-50load-cpu
+    - 30workers-50load-cpu
+    - 40workers-50load-cpu
+    - 50workers-50load-cpu
+    - 60workers-50load-cpu
+    - 70workers-50load-cpu
+    - 80workers-50load-cpu
+    - 90workers-50load-cpu
+    - 100workers-50load-cpu
+    - 110workers-50load-cpu
+    - 120workers-50load-cpu
+    - 130workers-50load-cpu
+    - 140workers-50load-cpu
+    - 150workers-50load-cpu
+    - 160workers-50load-cpu
+    - 170workers-50load-cpu
+    - 180workers-50load-cpu
+    - 190workers-50load-cpu
+    - 200workers-50load-cpu
+    - 210workers-50load-cpu
+    - 220workers-50load-cpu
+    - 230workers-50load-cpu
+    - 240workers-50load-cpu
+  - name: suspending1
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending2
+    templateType: Suspend
+    deadline: 1h
+  - name: 10workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 10
+          load: 50
+  - name: 20workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 20
+          load: 50
+  - name: 30workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 30
+          load: 50
+  - name: 40workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 40
+          load: 50
+  - name: 50workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 50
+          load: 50
+  - name: 60workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 60
+          load: 50
+  - name: 70workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 70
+          load: 50
+  - name: 80workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 80
+          load: 50
+  - name: 90workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 90
+          load: 50
+  - name: 100workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 100
+          load: 50
+  - name: 110workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 110
+          load: 50
+  - name: 120workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 120
+          load: 50
+  - name: 130workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 130
+          load: 50
+  - name: 140workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 140
+          load: 50
+  - name: 150workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 150
+          load: 50
+  - name: 160workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 160
+          load: 50
+  - name: 170workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 170
+          load: 50
+  - name: 180workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 180
+          load: 50
+  - name: 190workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 190
+          load: 50
+  - name: 200workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 200
+          load: 50
+  - name: 210workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 210
+          load: 50
+  - name: 220workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 220
+          load: 50
+  - name: 230workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 230
+          load: 50
+  - name: 240workers-50load-cpu
+    templateType: StressChaos
+    deadline: 5m
+    stressChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-train-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      stressors:
+        cpu:
+          workers: 240
+          load: 50

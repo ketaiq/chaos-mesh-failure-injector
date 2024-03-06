@@ -1,0 +1,596 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: Workflow
+metadata:
+  namespace: default
+  name: linear-network-delay-ts-station-service-022621
+spec:
+  entry: entry
+  templates:
+  - name: entry
+    templateType: Serial
+    deadline: 4h
+    children:
+    - suspending1
+    - suspending2
+    - 1000ms-delay
+    - 2000ms-delay
+    - 3000ms-delay
+    - 4000ms-delay
+    - 5000ms-delay
+    - 6000ms-delay
+    - 7000ms-delay
+    - 8000ms-delay
+    - 9000ms-delay
+    - 10000ms-delay
+    - 11000ms-delay
+    - 12000ms-delay
+    - 13000ms-delay
+    - 14000ms-delay
+    - 15000ms-delay
+    - 16000ms-delay
+    - 17000ms-delay
+    - 18000ms-delay
+    - 19000ms-delay
+    - 20000ms-delay
+    - 21000ms-delay
+    - 22000ms-delay
+    - 23000ms-delay
+    - 24000ms-delay
+  - name: suspending1
+    templateType: Suspend
+    deadline: 1h
+  - name: suspending2
+    templateType: Suspend
+    deadline: 1h
+  - name: 1000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 1000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 2000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 2000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 3000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 3000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 4000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 4000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 5000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 5000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 6000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 6000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 7000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 7000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 8000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 8000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 9000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 9000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 10000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 10000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 11000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 11000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 12000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 12000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 13000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 13000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 14000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 14000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 15000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 15000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 16000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 16000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 17000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 17000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 18000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 18000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 19000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 19000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 20000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 20000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 21000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 21000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 22000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 22000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 23000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 23000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
+  - name: 24000ms-delay
+    templateType: NetworkChaos
+    deadline: 5m
+    networkChaos:
+      selector:
+        namespaces:
+        - default
+        labelSelectors:
+          app: ts-station-service
+        podPhaseSelectors:
+        - Running
+      mode: all
+      action: delay
+      delay:
+        latency: 24000ms
+        correlation: '0'
+        jitter: 0ms
+      direction: both
+      target:
+        selector:
+          namespaces:
+          - default
+        mode: all
